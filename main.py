@@ -340,6 +340,8 @@ def main():
     all_comparisons = OptimizerComparison()
 
     for optimizer_name in args.optimizers:
+        # Reset seed before each optimizer to ensure fair comparison
+        set_seed(args.seed)
         result = run_experiment(args, optimizer_name, dataset, device)
 
         # Merge results into global comparison
