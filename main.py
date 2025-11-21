@@ -5,14 +5,32 @@ GCN Optimizer Comparison
 Compare standard Adam optimizer with T_Adam (customizable Adam) on GCN training.
 
 Usage:
-    # Node classification (single graph)
+    # Basic comparison (standard Adam vs standard T_Adam)
     python main.py --dataset cora --task node
 
-    # Graph classification (multiple graphs)
-    python main.py --dataset MUTAG --task graph
+    # T_Adam with TRF-based global learning rate scaling
+    python main.py --dataset cora --task node --use_trf
+
+    # T_Adam with Anti-Hub local gradient scaling
+    python main.py --dataset cora --task node --gradient_scaling anti_hub
+
+    # T_Adam with Homophily-based local gradient scaling
+    python main.py --dataset cora --task node --gradient_scaling homophily
+
+    # T_Adam with Ricci Curvature local gradient scaling
+    python main.py --dataset cora --task node --gradient_scaling ricci
+
+    # T_Adam with full dual scaling (TRF global + local gradient scaling)
+    python main.py --dataset cora --task node --use_trf --gradient_scaling anti_hub
+
+    # Advanced: Custom TRF parameters
+    python main.py --dataset cora --task node --use_trf --beta_trf 0.2 --trf_weights 1.0 1.0 1.0 1.0 1.0 1.5
+
+    # Graph classification with dual scaling
+    python main.py --dataset MUTAG --task graph --use_trf --gradient_scaling ricci
 
     # Use GPU
-    python main.py --dataset cora --task node --device cuda
+    python main.py --dataset cora --task node --device cuda --gradient_scaling homophily
 """
 
 import argparse
@@ -70,6 +88,21 @@ def parse_args():
                         help='Optimizers to compare (Adam, T_Adam)')
     parser.add_argument('--pooling', type=str, default='mean', choices=['mean', 'add', 'max'],
                         help='Pooling method for graph classification')
+
+    # T_Adam dual scaling settings
+    parser.add_argument('--use_trf', action='store_true',
+                        help='Enable TRF-based global learning rate scaling for T_Adam')
+    parser.add_argument('--gradient_scaling', type=str, default=None,
+                        choices=['anti_hub', 'homophily', 'ricci'],
+                        help='Local gradient scaling mode: anti_hub (penalize hubs), '
+                             'homophily (emphasize homogeneous regions), '
+                             'ricci (emphasize bridge nodes)')
+    parser.add_argument('--beta_trf', type=float, default=0.1,
+                        help='TRF scaling parameter for learning rate adjustment (default: 0.1)')
+    parser.add_argument('--trf_weights', type=float, nargs=6, default=[1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+                        help='TRF component weights: wA wNc wEc wE wL wmu (default: all 1.0)')
+    parser.add_argument('--node_grad_layer', type=int, default=0,
+                        help='Which layer to apply local gradient scaling (default: 0 = first layer)')
 
     # Device settings
     parser.add_argument('--device', type=str, default='cuda' if torch.cuda.is_available() else 'cpu',
@@ -219,7 +252,49 @@ def run_experiment(args, optimizer_name, dataset, device):
     if optimizer_name == 'Adam':
         optimizer = Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     elif optimizer_name == 'T_Adam':
-        optimizer = T_Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+        # Prepare graph data for dual topological scaling
+        graph_data = None
+        if args.use_trf or args.gradient_scaling:
+            if args.task == 'node':
+                # For node classification, use the single graph
+                graph_data = {
+                    'edge_index': graph['edge_index'],
+                    'num_nodes': graph['num_nodes'],
+                    'node_features': graph['node_feat'] if args.gradient_scaling == 'homophily' else None
+                }
+            else:
+                # For graph classification, use the first graph as representative
+                # (TRF will be computed once on this graph)
+                first_batch = next(iter(dataset.train_loader))
+                graph_data = {
+                    'edge_index': first_batch.edge_index[:, :first_batch.ptr[1]],  # First graph only
+                    'num_nodes': int(first_batch.ptr[1]),
+                    'node_features': first_batch.x[:first_batch.ptr[1]] if args.gradient_scaling == 'homophily' else None
+                }
+
+        # Prepare TRF weights dictionary
+        trf_weights = None
+        if args.use_trf:
+            trf_weights = {
+                'wA': args.trf_weights[0],
+                'wNc': args.trf_weights[1],
+                'wEc': args.trf_weights[2],
+                'wE': args.trf_weights[3],
+                'wL': args.trf_weights[4],
+                'wmu': args.trf_weights[5]
+            }
+
+        # Create T_Adam with dual scaling options
+        optimizer = T_Adam(
+            model.parameters(),
+            lr=args.lr,
+            weight_decay=args.weight_decay,
+            graph_data=graph_data,
+            trf_weights=trf_weights,
+            beta_trf=args.beta_trf,
+            gradient_scaling_mode=args.gradient_scaling,
+            node_grad_indices=[args.node_grad_layer] if args.gradient_scaling else None
+        )
     else:
         raise ValueError(f"Unknown optimizer: {optimizer_name}")
 
@@ -315,6 +390,30 @@ def main():
     print(f"Task: {args.task}")
     print(f"Device: {args.device}")
     print(f"Optimizers: {', '.join(args.optimizers)}")
+
+    # Print T_Adam dual scaling configuration if enabled
+    if 'T_Adam' in args.optimizers:
+        print(f"\nT_Adam Configuration:")
+        if args.use_trf:
+            print(f"  ✓ TRF-based global LR scaling (β={args.beta_trf})")
+            print(f"    TRF weights: wA={args.trf_weights[0]}, wNc={args.trf_weights[1]}, "
+                  f"wEc={args.trf_weights[2]}, wE={args.trf_weights[3]}, "
+                  f"wL={args.trf_weights[4]}, wμ={args.trf_weights[5]}")
+        else:
+            print(f"  ✗ TRF scaling disabled")
+
+        if args.gradient_scaling:
+            print(f"  ✓ Local gradient scaling: {args.gradient_scaling}")
+            if args.gradient_scaling == 'anti_hub':
+                print(f"    Mode: Anti-Hub Dominance (α=1/log(degree+ε))")
+            elif args.gradient_scaling == 'homophily':
+                print(f"    Mode: Homophily-based (α=1+tanh(H_v))")
+            elif args.gradient_scaling == 'ricci':
+                print(f"    Mode: Ricci Curvature (α=exp(-κ_v))")
+            print(f"    Applied to layer: {args.node_grad_layer}")
+        else:
+            print(f"  ✗ Local gradient scaling disabled")
+
     print("="*80)
 
     # Load dataset
