@@ -22,6 +22,12 @@ import networkx as nx
 from scipy.sparse.linalg import eigsh
 from scipy.sparse import csr_matrix
 import warnings
+import sys
+import os
+
+# Add parent directory to path for imports
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from utils.topo_cache import get_global_cache
 
 
 class T_Adam(Optimizer):
@@ -40,10 +46,15 @@ class T_Adam(Optimizer):
         amsgrad (boolean, optional): whether to use the AMSGrad variant (default: False)
 
         # Topological parameters
-        graph_data (dict, optional): Dictionary containing:
-            - 'edge_index': torch.Tensor of shape [2, num_edges]
-            - 'num_nodes': int
-            - 'node_features': torch.Tensor of shape [num_nodes, num_features] (optional, for homophily)
+        graph_data (dict or list, optional):
+            For single graph (node classification):
+                Dictionary containing:
+                - 'edge_index': torch.Tensor of shape [2, num_edges]
+                - 'num_nodes': int
+                - 'node_features': torch.Tensor of shape [num_nodes, num_features] (optional, for homophily)
+            For multi-graph datasets (graph classification):
+                List of dictionaries, each containing the same fields as above.
+                TRF will be computed as average over all graphs in the list.
 
         # TRF parameters
         trf_weights (dict, optional): Weights for TRF calculation
@@ -99,9 +110,14 @@ class T_Adam(Optimizer):
         self.trf_value = None
         self.lr_scale_factor = 1.0
         self.node_weights = None
+        self.cache = get_global_cache()
 
         if graph_data is not None:
-            self._compute_trf()
+            # Determine if we have single graph or multiple graphs
+            self.is_multigraph = isinstance(graph_data, list)
+
+            if trf_weights is not None:
+                self._compute_trf()
             if gradient_scaling_mode is not None:
                 self._compute_node_weights()
 
@@ -110,11 +126,17 @@ class T_Adam(Optimizer):
         for group in self.param_groups:
             group.setdefault('amsgrad', False)
 
-    def _edge_index_to_networkx(self):
-        """Convert PyTorch Geometric edge_index to NetworkX graph."""
-        edge_index = self.graph_data['edge_index']
-        num_nodes = self.graph_data['num_nodes']
+    def _edge_index_to_networkx_single(self, edge_index, num_nodes):
+        """
+        Convert PyTorch Geometric edge_index to NetworkX graph.
 
+        Args:
+            edge_index: Edge index tensor [2, num_edges]
+            num_nodes: Number of nodes
+
+        Returns:
+            NetworkX graph
+        """
         # Convert to numpy
         if isinstance(edge_index, torch.Tensor):
             edge_index = edge_index.cpu().numpy()
@@ -127,6 +149,20 @@ class T_Adam(Optimizer):
         G.add_edges_from(edges)
 
         return G
+
+    def _edge_index_to_networkx(self):
+        """Convert PyTorch Geometric edge_index to NetworkX graph (compatibility method)."""
+        if self.is_multigraph:
+            # For multigraph, use first graph
+            return self._edge_index_to_networkx_single(
+                self.graph_data[0]['edge_index'],
+                self.graph_data[0]['num_nodes']
+            )
+        else:
+            return self._edge_index_to_networkx_single(
+                self.graph_data['edge_index'],
+                self.graph_data['num_nodes']
+            )
 
     def _compute_algebraic_connectivity(self, G):
         """
@@ -207,40 +243,95 @@ class T_Adam(Optimizer):
 
     def _compute_trf(self):
         """
-        Compute TRF (Topological Relevance Function).
+        Compute TRF (Topological Relevance Function) with caching support.
+        For multi-graph datasets, computes average TRF across all graphs.
+
         TRF(G) = 1 + μG × [wA×(n-A)/A + wNc×(n-1-Nc)/Nc + wEc×(n-1-Ec)/Ec + wE×(1-E)/E + wL×(L-1)]
         where μG = wμ × m/n
         """
-        print("Computing TRF (Topological Relevance Function)...")
+        if self.is_multigraph:
+            print(f"Computing TRF for multi-graph dataset ({len(self.graph_data)} graphs)...")
+            trf_values = []
+            lr_scale_factors = []
 
-        G = self._edge_index_to_networkx()
+            for idx, graph in enumerate(self.graph_data):
+                print(f"\n  Graph {idx+1}/{len(self.graph_data)}:")
+                trf_val, lr_factor = self._compute_single_graph_trf(
+                    graph['edge_index'],
+                    graph['num_nodes']
+                )
+                trf_values.append(trf_val)
+                lr_scale_factors.append(lr_factor)
+
+            # Average TRF and LR scale factor
+            self.trf_value = np.mean(trf_values)
+            self.lr_scale_factor = np.mean(lr_scale_factors)
+
+            print(f"\n  Average TRF(G) = {self.trf_value:.4f} (std={np.std(trf_values):.4f})")
+            print(f"  Average LR scale factor = {self.lr_scale_factor:.6f} (std={np.std(lr_scale_factors):.6f})")
+            print(f"  Adjusted LR = {self.param_groups[0]['lr']} × {self.lr_scale_factor:.6f} = {self.param_groups[0]['lr'] * self.lr_scale_factor:.6f}\n")
+        else:
+            print("Computing TRF (Topological Relevance Function)...")
+            self.trf_value, self.lr_scale_factor = self._compute_single_graph_trf(
+                self.graph_data['edge_index'],
+                self.graph_data['num_nodes']
+            )
+            print(f"\n  TRF(G) = {self.trf_value:.4f}")
+            print(f"  LR scale factor = exp(-{self.beta_trf} × {self.trf_value:.4f}) = {self.lr_scale_factor:.6f}")
+            print(f"  Adjusted LR = {self.param_groups[0]['lr']} × {self.lr_scale_factor:.6f} = {self.param_groups[0]['lr'] * self.lr_scale_factor:.6f}\n")
+
+    def _compute_single_graph_trf(self, edge_index, num_nodes):
+        """
+        Compute TRF for a single graph with caching.
+
+        Returns:
+            tuple: (trf_value, lr_scale_factor)
+        """
+        # Create cache key parameters
+        cache_params = {
+            'trf_weights': str(sorted(self.trf_weights.items())),
+            'beta_trf': self.beta_trf
+        }
+
+        # Try to get from cache
+        cached_result = self.cache.get(
+            edge_index, num_nodes, 'trf',
+            use_features=False,
+            **cache_params
+        )
+
+        if cached_result is not None:
+            return cached_result
+
+        # Compute TRF if not cached
+        G = self._edge_index_to_networkx_single(edge_index, num_nodes)
         n = G.number_of_nodes()
         m = G.number_of_edges()
 
         # Compute topological metrics
-        print("  - Computing algebraic connectivity...")
+        print("    - Computing algebraic connectivity...")
         A = self._compute_algebraic_connectivity(G)
-        print(f"    A = {A:.4f}")
+        print(f"      A = {A:.4f}")
 
-        print("  - Computing node connectivity...")
+        print("    - Computing node connectivity...")
         Nc = self._compute_node_connectivity(G)
-        print(f"    Nc = {Nc}")
+        print(f"      Nc = {Nc}")
 
-        print("  - Computing edge connectivity...")
+        print("    - Computing edge connectivity...")
         Ec = self._compute_edge_connectivity(G)
-        print(f"    Ec = {Ec}")
+        print(f"      Ec = {Ec}")
 
-        print("  - Computing global efficiency...")
+        print("    - Computing global efficiency...")
         E = self._compute_global_efficiency(G)
-        print(f"    E = {E:.4f}")
+        print(f"      E = {E:.4f}")
 
-        print("  - Computing average path length...")
+        print("    - Computing average path length...")
         L = self._compute_average_path_length(G)
-        print(f"    L = {L:.4f}")
+        print(f"      L = {L:.4f}")
 
         # Compute μG
         mu_G = self.trf_weights['wmu'] * (m / n) if n > 0 else 0
-        print(f"  - μG = {mu_G:.4f}")
+        print(f"    - μG = {mu_G:.4f}")
 
         # Compute TRF components (with safety checks)
         term_A = self.trf_weights['wA'] * ((n - A) / A) if A > 1e-8 else 0
@@ -250,21 +341,57 @@ class T_Adam(Optimizer):
         term_L = self.trf_weights['wL'] * (L - 1)
 
         trf_sum = term_A + term_Nc + term_Ec + term_E + term_L
-        self.trf_value = 1 + mu_G * trf_sum
-
-        print(f"\n  TRF(G) = {self.trf_value:.4f}")
+        trf_value = 1 + mu_G * trf_sum
 
         # Compute learning rate scale factor
-        self.lr_scale_factor = math.exp(-self.beta_trf * self.trf_value)
-        print(f"  LR scale factor = exp(-{self.beta_trf} × {self.trf_value:.4f}) = {self.lr_scale_factor:.6f}")
-        print(f"  Adjusted LR = {self.param_groups[0]['lr']} × {self.lr_scale_factor:.6f} = {self.param_groups[0]['lr'] * self.lr_scale_factor:.6f}\n")
+        lr_scale_factor = math.exp(-self.beta_trf * trf_value)
+
+        result = (trf_value, lr_scale_factor)
+
+        # Cache the result
+        self.cache.set(
+            edge_index, num_nodes, 'trf', result,
+            use_features=False,
+            **cache_params
+        )
+
+        return result
 
     def _compute_node_weights(self):
         """
-        Compute node weights α(v) based on selected gradient scaling mode.
+        Compute node weights α(v) based on selected gradient scaling mode with caching.
+        For multi-graph datasets, uses the first graph as representative.
         """
-        G = self._edge_index_to_networkx()
-        num_nodes = G.number_of_nodes()
+        # Get the graph to use for node weights
+        if self.is_multigraph:
+            edge_index = self.graph_data[0]['edge_index']
+            num_nodes = self.graph_data[0]['num_nodes']
+            node_features = self.graph_data[0].get('node_features')
+        else:
+            edge_index = self.graph_data['edge_index']
+            num_nodes = self.graph_data['num_nodes']
+            node_features = self.graph_data.get('node_features')
+
+        # Create cache key parameters
+        use_features = (self.gradient_scaling_mode == 'homophily' and node_features is not None)
+        cache_params = {
+            'mode': self.gradient_scaling_mode
+        }
+
+        # Try to get from cache
+        cached_weights = self.cache.get(
+            edge_index, num_nodes, 'node_weights',
+            node_features=node_features,
+            use_features=use_features,
+            **cache_params
+        )
+
+        if cached_weights is not None:
+            self.node_weights = cached_weights
+            return
+
+        # Compute node weights if not cached
+        G = self._edge_index_to_networkx_single(edge_index, num_nodes)
 
         if self.gradient_scaling_mode == 'anti_hub':
             print("Computing node weights: Anti-Hub Dominance mode")
@@ -282,6 +409,14 @@ class T_Adam(Optimizer):
             print(f"  Weight range: [{self.node_weights.min():.4f}, {self.node_weights.max():.4f}]")
             print(f"  Mean weight: {self.node_weights.mean():.4f}\n")
 
+            # Cache the result
+            self.cache.set(
+                edge_index, num_nodes, 'node_weights', self.node_weights,
+                node_features=node_features,
+                use_features=use_features,
+                **cache_params
+            )
+
         elif self.gradient_scaling_mode == 'homophily':
             print("Computing node weights: Homophily-based mode")
             print("  Formula: α(v) = 1 + tanh(H_v)")
@@ -292,7 +427,7 @@ class T_Adam(Optimizer):
             # α(v) = 1 + tanh(H_v)
             # H_v = mean cosine similarity between v's features and neighbor features
 
-            if 'node_features' not in self.graph_data or self.graph_data['node_features'] is None:
+            if node_features is None:
                 warnings.warn("Node features not provided, using degree-based homophily approximation")
                 # Fallback: use degree similarity as proxy
                 degrees = dict(G.degree())
@@ -310,14 +445,15 @@ class T_Adam(Optimizer):
                         self.node_weights[v] = 1.0
             else:
                 # Use actual feature-based homophily
-                node_features = self.graph_data['node_features']
                 if isinstance(node_features, torch.Tensor):
-                    node_features = node_features.cpu().numpy()
+                    node_features_np = node_features.cpu().numpy()
+                else:
+                    node_features_np = node_features
 
                 # Normalize features for cosine similarity
-                norms = np.linalg.norm(node_features, axis=1, keepdims=True)
+                norms = np.linalg.norm(node_features_np, axis=1, keepdims=True)
                 norms[norms == 0] = 1  # Avoid division by zero
-                node_features_norm = node_features / norms
+                node_features_norm = node_features_np / norms
 
                 self.node_weights = torch.zeros(num_nodes)
                 for v in range(num_nodes):
@@ -334,6 +470,14 @@ class T_Adam(Optimizer):
 
             print(f"  Weight range: [{self.node_weights.min():.4f}, {self.node_weights.max():.4f}]")
             print(f"  Mean weight: {self.node_weights.mean():.4f}\n")
+
+            # Cache the result
+            self.cache.set(
+                edge_index, num_nodes, 'node_weights', self.node_weights,
+                node_features=node_features,
+                use_features=use_features,
+                **cache_params
+            )
 
         elif self.gradient_scaling_mode == 'ricci':
             print("Computing node weights: Ricci Curvature mode")
@@ -370,6 +514,14 @@ class T_Adam(Optimizer):
 
             print(f"  Weight range: [{self.node_weights.min():.4f}, {self.node_weights.max():.4f}]")
             print(f"  Mean weight: {self.node_weights.mean():.4f}\n")
+
+            # Cache the result
+            self.cache.set(
+                edge_index, num_nodes, 'node_weights', self.node_weights,
+                node_features=node_features,
+                use_features=use_features,
+                **cache_params
+            )
 
         else:
             raise ValueError(f"Unknown gradient scaling mode: {self.gradient_scaling_mode}")

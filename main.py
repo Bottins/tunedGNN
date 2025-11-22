@@ -263,14 +263,24 @@ def run_experiment(args, optimizer_name, dataset, device):
                     'node_features': graph['node_feat'] if args.gradient_scaling == 'homophily' else None
                 }
             else:
-                # For graph classification, use the first graph as representative
-                # (TRF will be computed once on this graph)
-                first_batch = next(iter(dataset.train_loader))
-                graph_data = {
-                    'edge_index': first_batch.edge_index[:, :first_batch.ptr[1]],  # First graph only
-                    'num_nodes': int(first_batch.ptr[1]),
-                    'node_features': first_batch.x[:first_batch.ptr[1]] if args.gradient_scaling == 'homophily' else None
-                }
+                # For graph classification, sample multiple representative graphs
+                # to compute average TRF (more robust than single graph)
+                import torch_geometric.data as pyg_data
+
+                num_sample_graphs = min(10, len(dataset.dataset))  # Sample up to 10 graphs
+                print(f"Sampling {num_sample_graphs} graphs for TRF computation...")
+
+                # Sample graphs uniformly from the dataset
+                indices = torch.linspace(0, len(dataset.dataset)-1, num_sample_graphs).long()
+                graph_data = []
+
+                for idx in indices:
+                    data = dataset.dataset[idx]
+                    graph_data.append({
+                        'edge_index': data.edge_index,
+                        'num_nodes': data.num_nodes,
+                        'node_features': data.x if args.gradient_scaling == 'homophily' else None
+                    })
 
         # Prepare TRF weights dictionary
         trf_weights = None
