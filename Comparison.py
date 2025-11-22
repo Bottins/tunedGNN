@@ -44,7 +44,7 @@ from utils import evaluate_model, compute_gradient_norm
 
 
 # Configuration constants
-NODE_DATASETS = ['cora', 'citeseer', 'pubmed']
+NODE_DATASETS = ['cora', 'citeseer']#, 'pubmed']
 GRAPH_DATASETS = ['MUTAG', 'PROTEINS', 'ENZYMES']
 
 # Optimizer configurations to test
