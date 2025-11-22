@@ -44,6 +44,11 @@ class GCN(nn.Module):
         self.residual = residual
         self.pooling = pooling
 
+        # Gradient scaling support
+        self.node_weights = None
+        self.gradient_scaling_layer = None
+        self.hook_handle = None
+
         # GCN Layers
         self.convs = nn.ModuleList()
         self.convs.append(GCNConv(in_channels, hidden_channels, cached=False, normalize=True))
@@ -98,6 +103,30 @@ class GCN(nn.Module):
                 ln.reset_parameters()
         self.output_layer.reset_parameters()
 
+    def register_gradient_scaling_hook(self, node_weights, layer_index=0):
+        """
+        Register a hook to scale gradients of node embeddings by node_weights.
+
+        Args:
+            node_weights (Tensor): Weights for each node [num_nodes]
+            layer_index (int): Which layer's output to hook (0 = first layer)
+        """
+        # Remove existing hook if any
+        self.remove_gradient_scaling_hook()
+
+        self.node_weights = node_weights
+        self.gradient_scaling_layer = layer_index
+
+        # The hook will be registered during forward pass
+
+    def remove_gradient_scaling_hook(self):
+        """Remove the gradient scaling hook."""
+        if self.hook_handle is not None:
+            self.hook_handle.remove()
+            self.hook_handle = None
+        self.node_weights = None
+        self.gradient_scaling_layer = None
+
     def forward(self, x, edge_index, batch=None):
         """
         Forward pass.
@@ -134,6 +163,32 @@ class GCN(nn.Module):
 
             # Dropout
             x = F.dropout(x, p=self.dropout, training=self.training)
+
+            # Register gradient scaling hook on specified layer's output
+            if (self.node_weights is not None and
+                self.gradient_scaling_layer is not None and
+                i == self.gradient_scaling_layer and
+                x.requires_grad):
+
+                def make_hook(weights):
+                    """Create hook closure with node weights."""
+                    def hook_fn(grad):
+                        # Scale gradients by node weights
+                        # grad shape: [num_nodes, hidden_dim] or [batch_nodes, hidden_dim]
+                        # For graph classification, only scale node-level gradients (before pooling)
+                        if grad.dim() == 2:
+                            weights_exp = weights.view(-1, 1).to(grad.device)
+                            # Handle case where grad has fewer nodes (e.g., in batched setting)
+                            if grad.shape[0] == weights_exp.shape[0]:
+                                return grad * weights_exp
+                            elif grad.shape[0] < weights_exp.shape[0]:
+                                # Use only relevant weights for this batch
+                                return grad * weights_exp[:grad.shape[0]]
+                        return grad
+                    return hook_fn
+
+                # Register the hook
+                self.hook_handle = x.register_hook(make_hook(self.node_weights))
 
         # Graph-level pooling for graph classification
         if self.pool is not None:
