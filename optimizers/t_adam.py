@@ -123,15 +123,14 @@ class T_Adam(Optimizer):
             else:
                 print(f"[T_Adam] TRF scaling DISABLED (lr_scale_factor = 1.0)")
 
-            # Local gradient scaling: DISABLED due to implementation issues
-            # The current implementation applies scaling to model parameters instead of node embeddings
-            # This is conceptually incorrect and causes all gradient scaling modes to produce identical results
+            # Local gradient scaling: compute node weights if mode is specified
             if gradient_scaling_mode is not None:
-                print(f"\n⚠️  [WARNING] Local gradient scaling (mode='{gradient_scaling_mode}') is DISABLED")
-                print(f"⚠️  The current implementation is broken - it scales model parameters, not node gradients")
-                print(f"⚠️  This will be redesigned in a future update")
-                print(f"⚠️  For now, only TRF global scaling works correctly\n")
-                # self._compute_node_weights()  # DISABLED - broken implementation
+                print(f"[T_Adam] Local gradient scaling ENABLED (mode='{gradient_scaling_mode}')")
+                print(f"[T_Adam] Computing node weights using {gradient_scaling_mode} mode...")
+                self._compute_node_weights()
+                print(f"[T_Adam] Node weights computed successfully")
+                print(f"[T_Adam] Remember to call optimizer.apply_gradient_scaling_to_model(model, layer_index)")
+                print(f"[T_Adam] before training to register the gradient hooks!\n")
 
     def __setstate__(self, state):
         super(T_Adam, self).__setstate__(state)
@@ -538,6 +537,32 @@ class T_Adam(Optimizer):
         else:
             raise ValueError(f"Unknown gradient scaling mode: {self.gradient_scaling_mode}")
 
+    def apply_gradient_scaling_to_model(self, model, layer_index=0):
+        """
+        Apply gradient scaling to the model by registering hooks on node embeddings.
+
+        Args:
+            model: The GCN model (must have register_gradient_scaling_hook method)
+            layer_index: Which layer's embeddings to scale (0 = first layer output)
+
+        Note:
+            This must be called before training starts if gradient_scaling_mode is not None.
+            The model must support gradient scaling hooks (e.g., our GCN class).
+        """
+        if self.node_weights is None:
+            print("[T_Adam] No node weights computed, skipping gradient scaling hook registration")
+            return
+
+        if not hasattr(model, 'register_gradient_scaling_hook'):
+            raise AttributeError(
+                "Model does not support gradient scaling. "
+                "Please use a model with register_gradient_scaling_hook() method."
+            )
+
+        print(f"[T_Adam] Registering gradient scaling hook on layer {layer_index}")
+        model.register_gradient_scaling_hook(self.node_weights, layer_index)
+        print(f"[T_Adam] Gradient scaling hook registered successfully\n")
+
     @torch.no_grad()
     def step(self, closure=None):
         """
@@ -615,7 +640,8 @@ class T_Adam(Optimizer):
 
         Dual Scaling:
         1. Global: lr_adjusted = lr_base × exp(-β × TRF(G))
-        2. Local: g_t = Σ_v∈V α(v) × ∇L(v)
+        2. Local: gradient hooks on node embeddings scale ∇L(v) by α(v)
+                 (applied via model.register_gradient_scaling_hook())
         """
 
         # Apply global learning rate scaling based on TRF
@@ -626,28 +652,6 @@ class T_Adam(Optimizer):
             exp_avg = exp_avgs[i]
             exp_avg_sq = exp_avg_sqs[i]
             step = state_steps[i]
-
-            # ===================================================================
-            # LOCAL GRADIENT SCALING (DISABLED - implementation is broken)
-            # ===================================================================
-            # The current implementation attempts to scale model parameter gradients,
-            # but this is conceptually wrong. We should scale node embedding gradients instead.
-            # This requires hooks or a different architecture.
-            # For now, this feature is completely disabled.
-
-            # DISABLED CODE:
-            # if (self.node_weights is not None and
-            #     self.node_grad_indices is not None and
-            #     i in self.node_grad_indices):
-            #     if grad.dim() == 2:
-            #         node_weights_expanded = self.node_weights.view(-1, 1).to(grad.device)
-            #         grad = grad * node_weights_expanded
-            #     elif grad.dim() == 1 and grad.shape[0] == self.node_weights.shape[0]:
-            #         grad = grad * self.node_weights.to(grad.device)
-
-            # ===================================================================
-            # STANDARD ADAM UPDATE WITH ADJUSTED LR
-            # ===================================================================
 
             # Add weight decay (L2 regularization)
             if weight_decay != 0:

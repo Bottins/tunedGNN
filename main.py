@@ -305,6 +305,10 @@ def run_experiment(args, optimizer_name, dataset, device):
             gradient_scaling_mode=args.gradient_scaling,
             node_grad_indices=[args.node_grad_layer] if args.gradient_scaling else None
         )
+
+        # Register gradient scaling hooks if using local gradient scaling
+        if args.gradient_scaling is not None:
+            optimizer.apply_gradient_scaling_to_model(model, layer_index=args.node_grad_layer)
     else:
         raise ValueError(f"Unknown optimizer: {optimizer_name}")
 

@@ -89,6 +89,10 @@ def train_with_t_adam(dataset_name='Cora', gradient_scaling_mode=None, epochs=20
         node_grad_indices=[0] if gradient_scaling_mode else None  # Apply to first layer's weights
     )
 
+    # Register gradient scaling hooks if using local gradient scaling
+    if gradient_scaling_mode is not None:
+        optimizer.apply_gradient_scaling_to_model(model, layer_index=0)
+
     print("\nStarting training...\n")
 
     # Training loop

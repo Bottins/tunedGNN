@@ -254,6 +254,10 @@ def run_single_experiment(dataset_name, task, config, run_idx, device, epochs=20
     # Create optimizer
     optimizer = create_optimizer(model, config, graph_data, lr=lr, weight_decay=5e-4)
 
+    # Register gradient scaling hooks if using local gradient scaling
+    if config.get('gradient_scaling') is not None and config['type'] == 'T_Adam':
+        optimizer.apply_gradient_scaling_to_model(model, layer_index=0)
+
     # Loss function
     criterion = nn.CrossEntropyLoss()
 
