@@ -288,8 +288,9 @@ class T_Adam(Optimizer):
                 self.graph_data['num_nodes']
             )
             print(f"\n  TRF(G) = {self.trf_value:.4f}")
-            print(f"  LR scale factor = exp(-{self.beta_trf} × {self.trf_value:.4f}) = {self.lr_scale_factor:.6f}")
-            print(f"  Adjusted LR = {self.param_groups[0]['lr']} × {self.lr_scale_factor:.6f} = {self.param_groups[0]['lr'] * self.lr_scale_factor:.6f}\n")
+            print(f"  LR scale factor = 0.001 + 0.999/(1 + {self.beta_trf}×{self.trf_value:.4f}) = {self.lr_scale_factor:.6f}")
+            print(f"  Adjusted LR = {self.param_groups[0]['lr']} × {self.lr_scale_factor:.6f} = {self.param_groups[0]['lr'] * self.lr_scale_factor:.6f}")
+            print(f"  (Bounded in [0.001, 1.0] to prevent extreme scaling)\n")
 
     def _compute_single_graph_trf(self, edge_index, num_nodes):
         """
@@ -299,9 +300,11 @@ class T_Adam(Optimizer):
             tuple: (trf_value, lr_scale_factor)
         """
         # Create cache key parameters
+        # IMPORTANT: Include formula_version to invalidate cache when formula changes
         cache_params = {
             'trf_weights': str(sorted(self.trf_weights.items())),
-            'beta_trf': self.beta_trf
+            'beta_trf': self.beta_trf,
+            'formula_version': 'bounded_v2'  # Changed from exponential to bounded hyperbolic
         }
 
         # Try to get from cache
@@ -354,8 +357,14 @@ class T_Adam(Optimizer):
         trf_sum = term_A + term_Nc + term_Ec + term_E + term_L
         trf_value = 1 + mu_G * trf_sum
 
-        # Compute learning rate scale factor
-        lr_scale_factor = math.exp(-self.beta_trf * trf_value)
+        # Compute learning rate scale factor with bounded hyperbolic function
+        # Maps TRF in [0, infinity) to scale in [0.001, 1.0]
+        # Formula: scale = 0.001 + 0.999 / (1 + beta * TRF)
+        # This ensures:
+        #   - TRF = 0: scale = 1.0 (no scaling)
+        #   - TRF → ∞: scale → 0.001 (minimum scale)
+        #   - Smooth transition between extremes
+        lr_scale_factor = 0.001 + 0.999 / (1.0 + self.beta_trf * trf_value)
 
         result = (trf_value, lr_scale_factor)
 
