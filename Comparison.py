@@ -222,13 +222,21 @@ def run_single_experiment(dataset_name, task, config, run_idx, device, epochs=20
         num_classes = dataset.num_classes
         pooling = 'mean'
 
-        # Use first graph as representative for T_Adam
-        first_batch = next(iter(dataset.train_loader))
-        graph_data = {
-            'edge_index': first_batch.edge_index[:, :first_batch.ptr[1]],
-            'num_nodes': int(first_batch.ptr[1]),
-            'node_features': first_batch.x[:first_batch.ptr[1]]
-        }
+        # Sample multiple representative graphs for T_Adam (more robust than single graph)
+        num_sample_graphs = min(10, len(dataset.dataset))
+        print(f"  Sampling {num_sample_graphs} graphs for TRF computation...")
+
+        # Sample graphs uniformly from the dataset
+        indices = torch.linspace(0, len(dataset.dataset)-1, num_sample_graphs).long()
+        graph_data = []
+
+        for idx in indices:
+            data = dataset.dataset[idx]
+            graph_data.append({
+                'edge_index': data.edge_index,
+                'num_nodes': data.num_nodes,
+                'node_features': data.x
+            })
 
     # Create model
     model = GCN(
