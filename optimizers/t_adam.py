@@ -116,10 +116,22 @@ class T_Adam(Optimizer):
             # Determine if we have single graph or multiple graphs
             self.is_multigraph = isinstance(graph_data, list)
 
+            # TRF global scaling: only compute if trf_weights are provided
             if trf_weights is not None:
+                print(f"[T_Adam] TRF-based global LR scaling ENABLED")
                 self._compute_trf()
+            else:
+                print(f"[T_Adam] TRF scaling DISABLED (lr_scale_factor = 1.0)")
+
+            # Local gradient scaling: DISABLED due to implementation issues
+            # The current implementation applies scaling to model parameters instead of node embeddings
+            # This is conceptually incorrect and causes all gradient scaling modes to produce identical results
             if gradient_scaling_mode is not None:
-                self._compute_node_weights()
+                print(f"\n⚠️  [WARNING] Local gradient scaling (mode='{gradient_scaling_mode}') is DISABLED")
+                print(f"⚠️  The current implementation is broken - it scales model parameters, not node gradients")
+                print(f"⚠️  This will be redesigned in a future update")
+                print(f"⚠️  For now, only TRF global scaling works correctly\n")
+                # self._compute_node_weights()  # DISABLED - broken implementation
 
     def __setstate__(self, state):
         super(T_Adam, self).__setstate__(state)
@@ -616,20 +628,22 @@ class T_Adam(Optimizer):
             step = state_steps[i]
 
             # ===================================================================
-            # LOCAL GRADIENT SCALING (if applicable)
+            # LOCAL GRADIENT SCALING (DISABLED - implementation is broken)
             # ===================================================================
-            # Apply per-node gradient weighting if this parameter corresponds to node embeddings
-            if (self.node_weights is not None and
-                self.node_grad_indices is not None and
-                i in self.node_grad_indices):
+            # The current implementation attempts to scale model parameter gradients,
+            # but this is conceptually wrong. We should scale node embedding gradients instead.
+            # This requires hooks or a different architecture.
+            # For now, this feature is completely disabled.
 
-                # Reshape gradient if needed to apply per-node weights
-                # Assuming grad shape is [num_nodes, feature_dim]
-                if grad.dim() == 2:
-                    node_weights_expanded = self.node_weights.view(-1, 1).to(grad.device)
-                    grad = grad * node_weights_expanded
-                elif grad.dim() == 1 and grad.shape[0] == self.node_weights.shape[0]:
-                    grad = grad * self.node_weights.to(grad.device)
+            # DISABLED CODE:
+            # if (self.node_weights is not None and
+            #     self.node_grad_indices is not None and
+            #     i in self.node_grad_indices):
+            #     if grad.dim() == 2:
+            #         node_weights_expanded = self.node_weights.view(-1, 1).to(grad.device)
+            #         grad = grad * node_weights_expanded
+            #     elif grad.dim() == 1 and grad.shape[0] == self.node_weights.shape[0]:
+            #         grad = grad * self.node_weights.to(grad.device)
 
             # ===================================================================
             # STANDARD ADAM UPDATE WITH ADJUSTED LR

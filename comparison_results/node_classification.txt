@@ -1,0 +1,2198 @@
+####################################################################################################
+# RUNNING NODE CLASSIFICATION COMPARISON
+####################################################################################################
+
+================================================================================
+COMPREHENSIVE T_ADAM COMPARISON - NODE CLASSIFICATION
+================================================================================
+Task: node
+Datasets: cora, citeseer
+Configurations: 9
+Runs per config: 5
+Epochs: 200
+Device: cuda
+================================================================================
+
+################################################################################
+# DATASET: cora
+################################################################################
+
+--------------------------------------------------------------------------------
+Configuration: Adam
+--------------------------------------------------------------------------------
+
+Progress: 1/90 (1.1%)
+
+================================================================================
+Run 1 | Dataset: cora | Config: Adam
+Seed: 42
+================================================================================
+Epoch   1 | Loss: 1.9450 | Train: 0.1429 | Val: 0.4040 | Test: 0.4290 | Best Test: 0.4290
+Epoch  50 | Loss: 0.0129 | Train: 1.0000 | Val: 0.7440 | Test: 0.7660 | Best Test: 0.8030
+Epoch 100 | Loss: 0.0047 | Train: 1.0000 | Val: 0.7440 | Test: 0.7770 | Best Test: 0.8030
+Epoch 150 | Loss: 0.0259 | Train: 0.9929 | Val: 0.7580 | Test: 0.7850 | Best Test: 0.8030
+Epoch 200 | Loss: 0.0120 | Train: 1.0000 | Val: 0.7340 | Test: 0.7510 | Best Test: 0.8030
+
+Best Val Acc: 0.7920 at epoch 10
+Test Acc at Best Val: 0.8030
+Total Time: 3.05s
+
+Progress: 2/90 (2.2%)
+
+================================================================================
+Run 2 | Dataset: cora | Config: Adam
+Seed: 43
+================================================================================
+Epoch   1 | Loss: 1.9519 | Train: 0.1429 | Val: 0.1440 | Test: 0.1530 | Best Test: 0.1530
+Epoch  50 | Loss: 0.0342 | Train: 0.9857 | Val: 0.7580 | Test: 0.7630 | Best Test: 0.8040
+Epoch 100 | Loss: 0.0104 | Train: 1.0000 | Val: 0.7500 | Test: 0.7780 | Best Test: 0.8040
+Epoch 150 | Loss: 0.0283 | Train: 0.9929 | Val: 0.7660 | Test: 0.7820 | Best Test: 0.8040
+Epoch 200 | Loss: 0.0042 | Train: 1.0000 | Val: 0.7540 | Test: 0.7800 | Best Test: 0.8040
+
+Best Val Acc: 0.7960 at epoch 10
+Test Acc at Best Val: 0.8040
+Total Time: 2.76s
+
+Progress: 3/90 (3.3%)
+
+================================================================================
+Run 3 | Dataset: cora | Config: Adam
+Seed: 44
+================================================================================
+Epoch   1 | Loss: 1.9498 | Train: 0.1714 | Val: 0.0960 | Test: 0.1110 | Best Test: 0.1110
+Epoch  50 | Loss: 0.0411 | Train: 0.9857 | Val: 0.7180 | Test: 0.7400 | Best Test: 0.8010
+Epoch 100 | Loss: 0.0395 | Train: 0.9929 | Val: 0.7380 | Test: 0.7710 | Best Test: 0.8010
+Epoch 150 | Loss: 0.0148 | Train: 0.9929 | Val: 0.7500 | Test: 0.7640 | Best Test: 0.8010
+Epoch 200 | Loss: 0.0115 | Train: 1.0000 | Val: 0.7020 | Test: 0.7550 | Best Test: 0.8010
+
+Best Val Acc: 0.7820 at epoch 10
+Test Acc at Best Val: 0.8010
+Total Time: 3.15s
+
+Progress: 4/90 (4.4%)
+
+================================================================================
+Run 4 | Dataset: cora | Config: Adam
+Seed: 45
+================================================================================
+Epoch   1 | Loss: 1.9472 | Train: 0.1714 | Val: 0.0580 | Test: 0.0650 | Best Test: 0.0650
+Epoch  50 | Loss: 0.0733 | Train: 0.9857 | Val: 0.7520 | Test: 0.7830 | Best Test: 0.7850
+Epoch 100 | Loss: 0.0098 | Train: 1.0000 | Val: 0.7300 | Test: 0.7550 | Best Test: 0.7850
+Epoch 150 | Loss: 0.0085 | Train: 1.0000 | Val: 0.7380 | Test: 0.7810 | Best Test: 0.7850
+Epoch 200 | Loss: 0.0055 | Train: 1.0000 | Val: 0.7600 | Test: 0.7790 | Best Test: 0.7850
+
+Best Val Acc: 0.7760 at epoch 27
+Test Acc at Best Val: 0.7850
+Total Time: 2.83s
+
+Progress: 5/90 (5.6%)
+
+================================================================================
+Run 5 | Dataset: cora | Config: Adam
+Seed: 46
+================================================================================
+Epoch   1 | Loss: 1.9453 | Train: 0.1571 | Val: 0.1720 | Test: 0.1600 | Best Test: 0.1600
+Epoch  50 | Loss: 0.0235 | Train: 0.9929 | Val: 0.7360 | Test: 0.7700 | Best Test: 0.8060
+Epoch 100 | Loss: 0.0100 | Train: 1.0000 | Val: 0.7460 | Test: 0.7620 | Best Test: 0.8060
+Epoch 150 | Loss: 0.0098 | Train: 1.0000 | Val: 0.7380 | Test: 0.7870 | Best Test: 0.8060
+Epoch 200 | Loss: 0.0069 | Train: 1.0000 | Val: 0.7380 | Test: 0.7810 | Best Test: 0.8060
+
+Best Val Acc: 0.7960 at epoch 16
+Test Acc at Best Val: 0.8060
+Total Time: 2.93s
+
+--------------------------------------------------------------------------------
+Configuration: T_Adam
+--------------------------------------------------------------------------------
+
+Progress: 6/90 (6.7%)
+
+================================================================================
+Run 1 | Dataset: cora | Config: T_Adam
+Seed: 42
+================================================================================
+Epoch   1 | Loss: 1.9450 | Train: 0.1429 | Val: 0.4060 | Test: 0.4260 | Best Test: 0.4260
+Epoch  50 | Loss: 0.0196 | Train: 0.9929 | Val: 0.7480 | Test: 0.7630 | Best Test: 0.8040
+Epoch 100 | Loss: 0.0056 | Train: 1.0000 | Val: 0.7660 | Test: 0.7730 | Best Test: 0.8040
+Epoch 150 | Loss: 0.0149 | Train: 0.9929 | Val: 0.7660 | Test: 0.7920 | Best Test: 0.8040
+Epoch 200 | Loss: 0.0183 | Train: 1.0000 | Val: 0.7480 | Test: 0.7680 | Best Test: 0.8040
+
+Best Val Acc: 0.7920 at epoch 10
+Test Acc at Best Val: 0.8040
+Total Time: 2.78s
+
+Progress: 7/90 (7.8%)
+
+================================================================================
+Run 2 | Dataset: cora | Config: T_Adam
+Seed: 43
+================================================================================
+Epoch   1 | Loss: 1.9519 | Train: 0.1429 | Val: 0.1440 | Test: 0.1540 | Best Test: 0.1540
+Epoch  50 | Loss: 0.0228 | Train: 0.9929 | Val: 0.7540 | Test: 0.7600 | Best Test: 0.8030
+Epoch 100 | Loss: 0.0138 | Train: 0.9929 | Val: 0.7560 | Test: 0.7770 | Best Test: 0.8030
+Epoch 150 | Loss: 0.0140 | Train: 1.0000 | Val: 0.7540 | Test: 0.7790 | Best Test: 0.8030
+Epoch 200 | Loss: 0.0057 | Train: 1.0000 | Val: 0.7500 | Test: 0.7890 | Best Test: 0.8030
+
+Best Val Acc: 0.7980 at epoch 10
+Test Acc at Best Val: 0.8030
+Total Time: 2.96s
+
+Progress: 8/90 (8.9%)
+
+================================================================================
+Run 3 | Dataset: cora | Config: T_Adam
+Seed: 44
+================================================================================
+Epoch   1 | Loss: 1.9498 | Train: 0.1714 | Val: 0.0960 | Test: 0.1110 | Best Test: 0.1110
+Epoch  50 | Loss: 0.0317 | Train: 0.9857 | Val: 0.7220 | Test: 0.7380 | Best Test: 0.8020
+Epoch 100 | Loss: 0.0121 | Train: 1.0000 | Val: 0.7440 | Test: 0.7770 | Best Test: 0.8020
+Epoch 150 | Loss: 0.0113 | Train: 1.0000 | Val: 0.7360 | Test: 0.7730 | Best Test: 0.8020
+Epoch 200 | Loss: 0.0167 | Train: 0.9929 | Val: 0.7220 | Test: 0.7490 | Best Test: 0.8020
+
+Best Val Acc: 0.7840 at epoch 10
+Test Acc at Best Val: 0.8020
+Total Time: 2.75s
+
+Progress: 9/90 (10.0%)
+
+================================================================================
+Run 4 | Dataset: cora | Config: T_Adam
+Seed: 45
+================================================================================
+Epoch   1 | Loss: 1.9472 | Train: 0.1714 | Val: 0.0580 | Test: 0.0650 | Best Test: 0.0650
+Epoch  50 | Loss: 0.0793 | Train: 0.9786 | Val: 0.7540 | Test: 0.7800 | Best Test: 0.7730
+Epoch 100 | Loss: 0.0070 | Train: 1.0000 | Val: 0.7440 | Test: 0.7630 | Best Test: 0.7730
+Epoch 150 | Loss: 0.0099 | Train: 1.0000 | Val: 0.7640 | Test: 0.7810 | Best Test: 0.7790
+Epoch 200 | Loss: 0.0171 | Train: 1.0000 | Val: 0.7220 | Test: 0.7510 | Best Test: 0.7790
+
+Best Val Acc: 0.7720 at epoch 134
+Test Acc at Best Val: 0.7790
+Total Time: 2.84s
+
+Progress: 10/90 (11.1%)
+
+================================================================================
+Run 5 | Dataset: cora | Config: T_Adam
+Seed: 46
+================================================================================
+Epoch   1 | Loss: 1.9453 | Train: 0.1571 | Val: 0.1720 | Test: 0.1590 | Best Test: 0.1590
+Epoch  50 | Loss: 0.0239 | Train: 0.9929 | Val: 0.7540 | Test: 0.7700 | Best Test: 0.8080
+Epoch 100 | Loss: 0.0126 | Train: 1.0000 | Val: 0.7620 | Test: 0.7730 | Best Test: 0.8080
+Epoch 150 | Loss: 0.0359 | Train: 0.9929 | Val: 0.7460 | Test: 0.7780 | Best Test: 0.8080
+Epoch 200 | Loss: 0.0197 | Train: 0.9929 | Val: 0.7180 | Test: 0.7500 | Best Test: 0.8080
+
+Best Val Acc: 0.8000 at epoch 16
+Test Acc at Best Val: 0.8080
+Total Time: 2.74s
+
+--------------------------------------------------------------------------------
+Configuration: T_Adam+TRF
+--------------------------------------------------------------------------------
+
+Progress: 11/90 (12.2%)
+
+================================================================================
+Run 1 | Dataset: cora | Config: T_Adam+TRF
+Seed: 42
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache MISS] trf
+    - Computing algebraic connectivity...
+      A = 0.0000
+    - Computing node connectivity...
+      Nc = 0
+    - Computing edge connectivity...
+      Ec = 0
+    - Computing global efficiency...
+      E = 0.1496
+    - Computing average path length...
+      L = 6.3110
+    - μG = 1.9490
+  [Cache STORED] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+Epoch   1 | Loss: 1.9450 | Train: 0.1429 | Val: 0.3160 | Test: 0.3160 | Best Test: 0.3160
+Epoch  50 | Loss: 0.7912 | Train: 0.8500 | Val: 0.7560 | Test: 0.7710 | Best Test: 0.7590
+Epoch 100 | Loss: 0.0775 | Train: 0.9929 | Val: 0.7720 | Test: 0.7770 | Best Test: 0.7860
+Epoch 150 | Loss: 0.0362 | Train: 0.9929 | Val: 0.7660 | Test: 0.7790 | Best Test: 0.7860
+Epoch 200 | Loss: 0.0377 | Train: 0.9929 | Val: 0.7640 | Test: 0.7710 | Best Test: 0.7860
+
+Best Val Acc: 0.7840 at epoch 62
+Test Acc at Best Val: 0.7860
+Total Time: 3.24s
+
+Progress: 12/90 (13.3%)
+
+================================================================================
+Run 2 | Dataset: cora | Config: T_Adam+TRF
+Seed: 43
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+Epoch   1 | Loss: 1.9519 | Train: 0.1429 | Val: 0.1560 | Test: 0.1440 | Best Test: 0.1440
+Epoch  50 | Loss: 0.7326 | Train: 0.8143 | Val: 0.7680 | Test: 0.7690 | Best Test: 0.7690
+Epoch 100 | Loss: 0.0924 | Train: 0.9786 | Val: 0.7820 | Test: 0.7780 | Best Test: 0.7950
+Epoch 150 | Loss: 0.0396 | Train: 0.9929 | Val: 0.7700 | Test: 0.7720 | Best Test: 0.7950
+Epoch 200 | Loss: 0.0218 | Train: 1.0000 | Val: 0.7640 | Test: 0.7700 | Best Test: 0.7950
+
+Best Val Acc: 0.7960 at epoch 73
+Test Acc at Best Val: 0.7950
+Total Time: 2.79s
+
+Progress: 13/90 (14.4%)
+
+================================================================================
+Run 3 | Dataset: cora | Config: T_Adam+TRF
+Seed: 44
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+Epoch   1 | Loss: 1.9498 | Train: 0.1714 | Val: 0.0740 | Test: 0.0920 | Best Test: 0.0920
+Epoch  50 | Loss: 0.8140 | Train: 0.8500 | Val: 0.7660 | Test: 0.7880 | Best Test: 0.7880
+Epoch 100 | Loss: 0.1177 | Train: 0.9786 | Val: 0.7580 | Test: 0.7680 | Best Test: 0.7880
+Epoch 150 | Loss: 0.0600 | Train: 0.9857 | Val: 0.7500 | Test: 0.7700 | Best Test: 0.7880
+Epoch 200 | Loss: 0.0292 | Train: 1.0000 | Val: 0.7460 | Test: 0.7690 | Best Test: 0.7880
+
+Best Val Acc: 0.7660 at epoch 48
+Test Acc at Best Val: 0.7880
+Total Time: 3.51s
+
+Progress: 14/90 (15.6%)
+
+================================================================================
+Run 4 | Dataset: cora | Config: T_Adam+TRF
+Seed: 45
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+Epoch   1 | Loss: 1.9472 | Train: 0.1714 | Val: 0.1080 | Test: 0.1180 | Best Test: 0.1180
+Epoch  50 | Loss: 0.8241 | Train: 0.8000 | Val: 0.7640 | Test: 0.7650 | Best Test: 0.7660
+Epoch 100 | Loss: 0.0770 | Train: 0.9857 | Val: 0.7820 | Test: 0.7770 | Best Test: 0.7900
+Epoch 150 | Loss: 0.0483 | Train: 0.9929 | Val: 0.7660 | Test: 0.7930 | Best Test: 0.7900
+Epoch 200 | Loss: 0.0359 | Train: 0.9929 | Val: 0.7740 | Test: 0.7820 | Best Test: 0.7900
+
+Best Val Acc: 0.7880 at epoch 73
+Test Acc at Best Val: 0.7900
+Total Time: 3.41s
+
+Progress: 15/90 (16.7%)
+
+================================================================================
+Run 5 | Dataset: cora | Config: T_Adam+TRF
+Seed: 46
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+Epoch   1 | Loss: 1.9453 | Train: 0.1571 | Val: 0.1680 | Test: 0.1450 | Best Test: 0.1450
+Epoch  50 | Loss: 0.9058 | Train: 0.7714 | Val: 0.7120 | Test: 0.7490 | Best Test: 0.7490
+Epoch 100 | Loss: 0.1184 | Train: 0.9786 | Val: 0.7700 | Test: 0.7810 | Best Test: 0.7980
+Epoch 150 | Loss: 0.0870 | Train: 0.9786 | Val: 0.7760 | Test: 0.7920 | Best Test: 0.7980
+Epoch 200 | Loss: 0.0277 | Train: 1.0000 | Val: 0.7500 | Test: 0.7830 | Best Test: 0.7980
+
+Best Val Acc: 0.7840 at epoch 116
+Test Acc at Best Val: 0.7980
+Total Time: 3.47s
+
+--------------------------------------------------------------------------------
+Configuration: T_Adam+AntiHub
+--------------------------------------------------------------------------------
+
+Progress: 16/90 (17.8%)
+
+================================================================================
+Run 1 | Dataset: cora | Config: T_Adam+AntiHub
+Seed: 42
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache MISS] node_weights
+Computing node weights: Anti-Hub Dominance mode
+  Formula: α(v) = 1/log(degree(v) + ε), where ε=1e-8
+  Purpose: Penalize hub gradients, emphasize peripheral nodes
+  Weight range: [0.1949, 1.4427]
+  Mean weight: 0.8183
+
+  [Cache STORED] node_weights
+Epoch   1 | Loss: 1.9450 | Train: 0.1429 | Val: 0.3160 | Test: 0.3160 | Best Test: 0.3160
+Epoch  50 | Loss: 0.7912 | Train: 0.8500 | Val: 0.7560 | Test: 0.7710 | Best Test: 0.7590
+Epoch 100 | Loss: 0.0775 | Train: 0.9929 | Val: 0.7720 | Test: 0.7770 | Best Test: 0.7860
+Epoch 150 | Loss: 0.0362 | Train: 0.9929 | Val: 0.7660 | Test: 0.7790 | Best Test: 0.7860
+Epoch 200 | Loss: 0.0377 | Train: 0.9929 | Val: 0.7640 | Test: 0.7710 | Best Test: 0.7860
+
+Best Val Acc: 0.7840 at epoch 62
+Test Acc at Best Val: 0.7860
+Total Time: 4.53s
+
+Progress: 17/90 (18.9%)
+
+================================================================================
+Run 2 | Dataset: cora | Config: T_Adam+AntiHub
+Seed: 43
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9519 | Train: 0.1429 | Val: 0.1560 | Test: 0.1440 | Best Test: 0.1440
+Epoch  50 | Loss: 0.7326 | Train: 0.8143 | Val: 0.7680 | Test: 0.7690 | Best Test: 0.7690
+Epoch 100 | Loss: 0.0924 | Train: 0.9786 | Val: 0.7820 | Test: 0.7780 | Best Test: 0.7950
+Epoch 150 | Loss: 0.0396 | Train: 0.9929 | Val: 0.7700 | Test: 0.7720 | Best Test: 0.7950
+Epoch 200 | Loss: 0.0218 | Train: 1.0000 | Val: 0.7640 | Test: 0.7700 | Best Test: 0.7950
+
+Best Val Acc: 0.7960 at epoch 73
+Test Acc at Best Val: 0.7950
+Total Time: 3.51s
+
+Progress: 18/90 (20.0%)
+
+================================================================================
+Run 3 | Dataset: cora | Config: T_Adam+AntiHub
+Seed: 44
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9498 | Train: 0.1714 | Val: 0.0740 | Test: 0.0920 | Best Test: 0.0920
+Epoch  50 | Loss: 0.8140 | Train: 0.8500 | Val: 0.7660 | Test: 0.7880 | Best Test: 0.7880
+Epoch 100 | Loss: 0.1177 | Train: 0.9786 | Val: 0.7580 | Test: 0.7680 | Best Test: 0.7880
+Epoch 150 | Loss: 0.0600 | Train: 0.9857 | Val: 0.7500 | Test: 0.7700 | Best Test: 0.7880
+Epoch 200 | Loss: 0.0292 | Train: 1.0000 | Val: 0.7460 | Test: 0.7690 | Best Test: 0.7880
+
+Best Val Acc: 0.7660 at epoch 48
+Test Acc at Best Val: 0.7880
+Total Time: 4.67s
+
+Progress: 19/90 (21.1%)
+
+================================================================================
+Run 4 | Dataset: cora | Config: T_Adam+AntiHub
+Seed: 45
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9472 | Train: 0.1714 | Val: 0.1080 | Test: 0.1180 | Best Test: 0.1180
+Epoch  50 | Loss: 0.8241 | Train: 0.8000 | Val: 0.7640 | Test: 0.7650 | Best Test: 0.7660
+Epoch 100 | Loss: 0.0770 | Train: 0.9857 | Val: 0.7820 | Test: 0.7770 | Best Test: 0.7900
+Epoch 150 | Loss: 0.0483 | Train: 0.9929 | Val: 0.7660 | Test: 0.7930 | Best Test: 0.7900
+Epoch 200 | Loss: 0.0359 | Train: 0.9929 | Val: 0.7740 | Test: 0.7820 | Best Test: 0.7900
+
+Best Val Acc: 0.7880 at epoch 73
+Test Acc at Best Val: 0.7900
+Total Time: 5.11s
+
+Progress: 20/90 (22.2%)
+
+================================================================================
+Run 5 | Dataset: cora | Config: T_Adam+AntiHub
+Seed: 46
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9453 | Train: 0.1571 | Val: 0.1680 | Test: 0.1450 | Best Test: 0.1450
+Epoch  50 | Loss: 0.9058 | Train: 0.7714 | Val: 0.7120 | Test: 0.7490 | Best Test: 0.7490
+Epoch 100 | Loss: 0.1183 | Train: 0.9786 | Val: 0.7700 | Test: 0.7810 | Best Test: 0.7980
+Epoch 150 | Loss: 0.0870 | Train: 0.9786 | Val: 0.7760 | Test: 0.7920 | Best Test: 0.7980
+Epoch 200 | Loss: 0.0277 | Train: 1.0000 | Val: 0.7500 | Test: 0.7830 | Best Test: 0.7980
+
+Best Val Acc: 0.7840 at epoch 116
+Test Acc at Best Val: 0.7980
+Total Time: 3.55s
+
+--------------------------------------------------------------------------------
+Configuration: T_Adam+Homophily
+--------------------------------------------------------------------------------
+
+Progress: 21/90 (23.3%)
+
+================================================================================
+Run 1 | Dataset: cora | Config: T_Adam+Homophily
+Seed: 42
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache MISS] node_weights
+Computing node weights: Homophily-based mode
+  Formula: α(v) = 1 + tanh(H_v)
+  where H_v = mean cosine similarity between node v and its neighbors
+  Purpose: Accelerate learning in homogeneous regions
+  Weight range: [1.0000, 1.7518]
+  Mean weight: 1.1741
+
+  [Cache STORED] node_weights
+Epoch   1 | Loss: 1.9450 | Train: 0.1429 | Val: 0.3160 | Test: 0.3160 | Best Test: 0.3160
+Epoch  50 | Loss: 0.7912 | Train: 0.8500 | Val: 0.7560 | Test: 0.7710 | Best Test: 0.7590
+Epoch 100 | Loss: 0.0775 | Train: 0.9929 | Val: 0.7720 | Test: 0.7770 | Best Test: 0.7860
+Epoch 150 | Loss: 0.0362 | Train: 0.9929 | Val: 0.7660 | Test: 0.7790 | Best Test: 0.7860
+Epoch 200 | Loss: 0.0377 | Train: 0.9929 | Val: 0.7640 | Test: 0.7710 | Best Test: 0.7860
+
+Best Val Acc: 0.7840 at epoch 62
+Test Acc at Best Val: 0.7860
+Total Time: 3.01s
+
+Progress: 22/90 (24.4%)
+
+================================================================================
+Run 2 | Dataset: cora | Config: T_Adam+Homophily
+Seed: 43
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9519 | Train: 0.1429 | Val: 0.1560 | Test: 0.1440 | Best Test: 0.1440
+Epoch  50 | Loss: 0.7326 | Train: 0.8143 | Val: 0.7680 | Test: 0.7690 | Best Test: 0.7690
+Epoch 100 | Loss: 0.0924 | Train: 0.9786 | Val: 0.7820 | Test: 0.7780 | Best Test: 0.7950
+Epoch 150 | Loss: 0.0396 | Train: 0.9929 | Val: 0.7700 | Test: 0.7720 | Best Test: 0.7950
+Epoch 200 | Loss: 0.0218 | Train: 1.0000 | Val: 0.7640 | Test: 0.7700 | Best Test: 0.7950
+
+Best Val Acc: 0.7960 at epoch 73
+Test Acc at Best Val: 0.7950
+Total Time: 3.02s
+
+Progress: 23/90 (25.6%)
+
+================================================================================
+Run 3 | Dataset: cora | Config: T_Adam+Homophily
+Seed: 44
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9498 | Train: 0.1714 | Val: 0.0740 | Test: 0.0920 | Best Test: 0.0920
+Epoch  50 | Loss: 0.8140 | Train: 0.8500 | Val: 0.7660 | Test: 0.7880 | Best Test: 0.7880
+Epoch 100 | Loss: 0.1177 | Train: 0.9786 | Val: 0.7580 | Test: 0.7680 | Best Test: 0.7880
+Epoch 150 | Loss: 0.0600 | Train: 0.9857 | Val: 0.7500 | Test: 0.7700 | Best Test: 0.7880
+Epoch 200 | Loss: 0.0292 | Train: 1.0000 | Val: 0.7460 | Test: 0.7690 | Best Test: 0.7880
+
+Best Val Acc: 0.7660 at epoch 48
+Test Acc at Best Val: 0.7880
+Total Time: 2.82s
+
+Progress: 24/90 (26.7%)
+
+================================================================================
+Run 4 | Dataset: cora | Config: T_Adam+Homophily
+Seed: 45
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9472 | Train: 0.1714 | Val: 0.1080 | Test: 0.1180 | Best Test: 0.1180
+Epoch  50 | Loss: 0.8241 | Train: 0.8000 | Val: 0.7640 | Test: 0.7650 | Best Test: 0.7660
+Epoch 100 | Loss: 0.0770 | Train: 0.9857 | Val: 0.7820 | Test: 0.7770 | Best Test: 0.7900
+Epoch 150 | Loss: 0.0483 | Train: 0.9929 | Val: 0.7660 | Test: 0.7930 | Best Test: 0.7900
+Epoch 200 | Loss: 0.0359 | Train: 0.9929 | Val: 0.7740 | Test: 0.7820 | Best Test: 0.7900
+
+Best Val Acc: 0.7880 at epoch 73
+Test Acc at Best Val: 0.7900
+Total Time: 2.75s
+
+Progress: 25/90 (27.8%)
+
+================================================================================
+Run 5 | Dataset: cora | Config: T_Adam+Homophily
+Seed: 46
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9453 | Train: 0.1571 | Val: 0.1680 | Test: 0.1450 | Best Test: 0.1450
+Epoch  50 | Loss: 0.9058 | Train: 0.7714 | Val: 0.7120 | Test: 0.7490 | Best Test: 0.7490
+Epoch 100 | Loss: 0.1183 | Train: 0.9786 | Val: 0.7700 | Test: 0.7810 | Best Test: 0.7980
+Epoch 150 | Loss: 0.0870 | Train: 0.9786 | Val: 0.7760 | Test: 0.7920 | Best Test: 0.7980
+Epoch 200 | Loss: 0.0277 | Train: 1.0000 | Val: 0.7500 | Test: 0.7830 | Best Test: 0.7980
+
+Best Val Acc: 0.7840 at epoch 116
+Test Acc at Best Val: 0.7980
+Total Time: 3.00s
+
+--------------------------------------------------------------------------------
+Configuration: T_Adam+Ricci
+--------------------------------------------------------------------------------
+
+Progress: 26/90 (28.9%)
+
+================================================================================
+Run 1 | Dataset: cora | Config: T_Adam+Ricci
+Seed: 42
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache MISS] node_weights
+Computing node weights: Ricci Curvature mode
+  Formula: α(v) = exp(-κ_v)
+  where κ_v is the Ollivier-Ricci curvature
+  Purpose: Emphasize bridge nodes between communities
+  Weight range: [1.0000, 2.7183]
+  Mean weight: 2.3937
+
+  [Cache STORED] node_weights
+Epoch   1 | Loss: 1.9450 | Train: 0.1429 | Val: 0.3160 | Test: 0.3160 | Best Test: 0.3160
+Epoch  50 | Loss: 0.7912 | Train: 0.8500 | Val: 0.7560 | Test: 0.7710 | Best Test: 0.7590
+Epoch 100 | Loss: 0.0775 | Train: 0.9929 | Val: 0.7720 | Test: 0.7770 | Best Test: 0.7860
+Epoch 150 | Loss: 0.0362 | Train: 0.9929 | Val: 0.7660 | Test: 0.7790 | Best Test: 0.7860
+Epoch 200 | Loss: 0.0377 | Train: 0.9929 | Val: 0.7640 | Test: 0.7710 | Best Test: 0.7860
+
+Best Val Acc: 0.7840 at epoch 62
+Test Acc at Best Val: 0.7860
+Total Time: 2.84s
+
+Progress: 27/90 (30.0%)
+
+================================================================================
+Run 2 | Dataset: cora | Config: T_Adam+Ricci
+Seed: 43
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9519 | Train: 0.1429 | Val: 0.1560 | Test: 0.1440 | Best Test: 0.1440
+Epoch  50 | Loss: 0.7326 | Train: 0.8143 | Val: 0.7680 | Test: 0.7690 | Best Test: 0.7690
+Epoch 100 | Loss: 0.0924 | Train: 0.9786 | Val: 0.7820 | Test: 0.7780 | Best Test: 0.7950
+Epoch 150 | Loss: 0.0396 | Train: 0.9929 | Val: 0.7700 | Test: 0.7720 | Best Test: 0.7950
+Epoch 200 | Loss: 0.0218 | Train: 1.0000 | Val: 0.7640 | Test: 0.7700 | Best Test: 0.7950
+
+Best Val Acc: 0.7960 at epoch 73
+Test Acc at Best Val: 0.7950
+Total Time: 2.86s
+
+Progress: 28/90 (31.1%)
+
+================================================================================
+Run 3 | Dataset: cora | Config: T_Adam+Ricci
+Seed: 44
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9498 | Train: 0.1714 | Val: 0.0740 | Test: 0.0920 | Best Test: 0.0920
+Epoch  50 | Loss: 0.8140 | Train: 0.8500 | Val: 0.7660 | Test: 0.7880 | Best Test: 0.7880
+Epoch 100 | Loss: 0.1177 | Train: 0.9786 | Val: 0.7580 | Test: 0.7680 | Best Test: 0.7880
+Epoch 150 | Loss: 0.0600 | Train: 0.9857 | Val: 0.7500 | Test: 0.7700 | Best Test: 0.7880
+Epoch 200 | Loss: 0.0292 | Train: 1.0000 | Val: 0.7460 | Test: 0.7690 | Best Test: 0.7880
+
+Best Val Acc: 0.7660 at epoch 48
+Test Acc at Best Val: 0.7880
+Total Time: 2.75s
+
+Progress: 29/90 (32.2%)
+
+================================================================================
+Run 4 | Dataset: cora | Config: T_Adam+Ricci
+Seed: 45
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9472 | Train: 0.1714 | Val: 0.1080 | Test: 0.1180 | Best Test: 0.1180
+Epoch  50 | Loss: 0.8241 | Train: 0.8000 | Val: 0.7640 | Test: 0.7650 | Best Test: 0.7660
+Epoch 100 | Loss: 0.0770 | Train: 0.9857 | Val: 0.7820 | Test: 0.7770 | Best Test: 0.7900
+Epoch 150 | Loss: 0.0483 | Train: 0.9929 | Val: 0.7660 | Test: 0.7930 | Best Test: 0.7900
+Epoch 200 | Loss: 0.0359 | Train: 0.9929 | Val: 0.7740 | Test: 0.7820 | Best Test: 0.7900
+
+Best Val Acc: 0.7880 at epoch 73
+Test Acc at Best Val: 0.7900
+Total Time: 2.93s
+
+Progress: 30/90 (33.3%)
+
+================================================================================
+Run 5 | Dataset: cora | Config: T_Adam+Ricci
+Seed: 46
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9453 | Train: 0.1571 | Val: 0.1680 | Test: 0.1450 | Best Test: 0.1450
+Epoch  50 | Loss: 0.9058 | Train: 0.7714 | Val: 0.7120 | Test: 0.7490 | Best Test: 0.7490
+Epoch 100 | Loss: 0.1183 | Train: 0.9786 | Val: 0.7700 | Test: 0.7810 | Best Test: 0.7980
+Epoch 150 | Loss: 0.0870 | Train: 0.9786 | Val: 0.7760 | Test: 0.7920 | Best Test: 0.7980
+Epoch 200 | Loss: 0.0277 | Train: 1.0000 | Val: 0.7500 | Test: 0.7830 | Best Test: 0.7980
+
+Best Val Acc: 0.7840 at epoch 116
+Test Acc at Best Val: 0.7980
+Total Time: 2.78s
+
+--------------------------------------------------------------------------------
+Configuration: T_Adam+TRF+AntiHub
+--------------------------------------------------------------------------------
+
+Progress: 31/90 (34.4%)
+
+================================================================================
+Run 1 | Dataset: cora | Config: T_Adam+TRF+AntiHub
+Seed: 42
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9450 | Train: 0.1429 | Val: 0.3160 | Test: 0.3160 | Best Test: 0.3160
+Epoch  50 | Loss: 0.7912 | Train: 0.8500 | Val: 0.7560 | Test: 0.7710 | Best Test: 0.7590
+Epoch 100 | Loss: 0.0775 | Train: 0.9929 | Val: 0.7720 | Test: 0.7770 | Best Test: 0.7860
+Epoch 150 | Loss: 0.0362 | Train: 0.9929 | Val: 0.7660 | Test: 0.7790 | Best Test: 0.7860
+Epoch 200 | Loss: 0.0377 | Train: 0.9929 | Val: 0.7640 | Test: 0.7710 | Best Test: 0.7860
+
+Best Val Acc: 0.7840 at epoch 62
+Test Acc at Best Val: 0.7860
+Total Time: 2.91s
+
+Progress: 32/90 (35.6%)
+
+================================================================================
+Run 2 | Dataset: cora | Config: T_Adam+TRF+AntiHub
+Seed: 43
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9519 | Train: 0.1429 | Val: 0.1560 | Test: 0.1440 | Best Test: 0.1440
+Epoch  50 | Loss: 0.7326 | Train: 0.8143 | Val: 0.7680 | Test: 0.7690 | Best Test: 0.7690
+Epoch 100 | Loss: 0.0924 | Train: 0.9786 | Val: 0.7820 | Test: 0.7780 | Best Test: 0.7950
+Epoch 150 | Loss: 0.0396 | Train: 0.9929 | Val: 0.7700 | Test: 0.7720 | Best Test: 0.7950
+Epoch 200 | Loss: 0.0218 | Train: 1.0000 | Val: 0.7640 | Test: 0.7700 | Best Test: 0.7950
+
+Best Val Acc: 0.7960 at epoch 73
+Test Acc at Best Val: 0.7950
+Total Time: 2.83s
+
+Progress: 33/90 (36.7%)
+
+================================================================================
+Run 3 | Dataset: cora | Config: T_Adam+TRF+AntiHub
+Seed: 44
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9498 | Train: 0.1714 | Val: 0.0740 | Test: 0.0920 | Best Test: 0.0920
+Epoch  50 | Loss: 0.8140 | Train: 0.8500 | Val: 0.7660 | Test: 0.7880 | Best Test: 0.7880
+Epoch 100 | Loss: 0.1177 | Train: 0.9786 | Val: 0.7580 | Test: 0.7680 | Best Test: 0.7880
+Epoch 150 | Loss: 0.0600 | Train: 0.9857 | Val: 0.7500 | Test: 0.7700 | Best Test: 0.7880
+Epoch 200 | Loss: 0.0292 | Train: 1.0000 | Val: 0.7460 | Test: 0.7690 | Best Test: 0.7880
+
+Best Val Acc: 0.7660 at epoch 48
+Test Acc at Best Val: 0.7880
+Total Time: 3.01s
+
+Progress: 34/90 (37.8%)
+
+================================================================================
+Run 4 | Dataset: cora | Config: T_Adam+TRF+AntiHub
+Seed: 45
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9472 | Train: 0.1714 | Val: 0.1080 | Test: 0.1180 | Best Test: 0.1180
+Epoch  50 | Loss: 0.8241 | Train: 0.8000 | Val: 0.7640 | Test: 0.7650 | Best Test: 0.7660
+Epoch 100 | Loss: 0.0770 | Train: 0.9857 | Val: 0.7820 | Test: 0.7770 | Best Test: 0.7900
+Epoch 150 | Loss: 0.0483 | Train: 0.9929 | Val: 0.7660 | Test: 0.7930 | Best Test: 0.7900
+Epoch 200 | Loss: 0.0359 | Train: 0.9929 | Val: 0.7740 | Test: 0.7820 | Best Test: 0.7900
+
+Best Val Acc: 0.7880 at epoch 73
+Test Acc at Best Val: 0.7900
+Total Time: 2.84s
+
+Progress: 35/90 (38.9%)
+
+================================================================================
+Run 5 | Dataset: cora | Config: T_Adam+TRF+AntiHub
+Seed: 46
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9453 | Train: 0.1571 | Val: 0.1680 | Test: 0.1450 | Best Test: 0.1450
+Epoch  50 | Loss: 0.9058 | Train: 0.7714 | Val: 0.7120 | Test: 0.7490 | Best Test: 0.7490
+Epoch 100 | Loss: 0.1183 | Train: 0.9786 | Val: 0.7700 | Test: 0.7810 | Best Test: 0.7980
+Epoch 150 | Loss: 0.0870 | Train: 0.9786 | Val: 0.7760 | Test: 0.7920 | Best Test: 0.7980
+Epoch 200 | Loss: 0.0277 | Train: 1.0000 | Val: 0.7500 | Test: 0.7830 | Best Test: 0.7980
+
+Best Val Acc: 0.7840 at epoch 116
+Test Acc at Best Val: 0.7980
+Total Time: 2.80s
+
+--------------------------------------------------------------------------------
+Configuration: T_Adam+TRF+Homophily
+--------------------------------------------------------------------------------
+
+Progress: 36/90 (40.0%)
+
+================================================================================
+Run 1 | Dataset: cora | Config: T_Adam+TRF+Homophily
+Seed: 42
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9450 | Train: 0.1429 | Val: 0.3160 | Test: 0.3160 | Best Test: 0.3160
+Epoch  50 | Loss: 0.7912 | Train: 0.8500 | Val: 0.7560 | Test: 0.7710 | Best Test: 0.7590
+Epoch 100 | Loss: 0.0775 | Train: 0.9929 | Val: 0.7720 | Test: 0.7770 | Best Test: 0.7860
+Epoch 150 | Loss: 0.0362 | Train: 0.9929 | Val: 0.7660 | Test: 0.7790 | Best Test: 0.7860
+Epoch 200 | Loss: 0.0377 | Train: 0.9929 | Val: 0.7640 | Test: 0.7710 | Best Test: 0.7860
+
+Best Val Acc: 0.7840 at epoch 62
+Test Acc at Best Val: 0.7860
+Total Time: 2.95s
+
+Progress: 37/90 (41.1%)
+
+================================================================================
+Run 2 | Dataset: cora | Config: T_Adam+TRF+Homophily
+Seed: 43
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9519 | Train: 0.1429 | Val: 0.1560 | Test: 0.1440 | Best Test: 0.1440
+Epoch  50 | Loss: 0.7326 | Train: 0.8143 | Val: 0.7680 | Test: 0.7690 | Best Test: 0.7690
+Epoch 100 | Loss: 0.0924 | Train: 0.9786 | Val: 0.7820 | Test: 0.7780 | Best Test: 0.7950
+Epoch 150 | Loss: 0.0396 | Train: 0.9929 | Val: 0.7700 | Test: 0.7720 | Best Test: 0.7950
+Epoch 200 | Loss: 0.0218 | Train: 1.0000 | Val: 0.7640 | Test: 0.7700 | Best Test: 0.7950
+
+Best Val Acc: 0.7960 at epoch 73
+Test Acc at Best Val: 0.7950
+Total Time: 2.80s
+
+Progress: 38/90 (42.2%)
+
+================================================================================
+Run 3 | Dataset: cora | Config: T_Adam+TRF+Homophily
+Seed: 44
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9498 | Train: 0.1714 | Val: 0.0740 | Test: 0.0920 | Best Test: 0.0920
+Epoch  50 | Loss: 0.8140 | Train: 0.8500 | Val: 0.7660 | Test: 0.7880 | Best Test: 0.7880
+Epoch 100 | Loss: 0.1177 | Train: 0.9786 | Val: 0.7580 | Test: 0.7680 | Best Test: 0.7880
+Epoch 150 | Loss: 0.0600 | Train: 0.9857 | Val: 0.7500 | Test: 0.7700 | Best Test: 0.7880
+Epoch 200 | Loss: 0.0292 | Train: 1.0000 | Val: 0.7460 | Test: 0.7690 | Best Test: 0.7880
+
+Best Val Acc: 0.7660 at epoch 48
+Test Acc at Best Val: 0.7880
+Total Time: 2.96s
+
+Progress: 39/90 (43.3%)
+
+================================================================================
+Run 4 | Dataset: cora | Config: T_Adam+TRF+Homophily
+Seed: 45
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9472 | Train: 0.1714 | Val: 0.1080 | Test: 0.1180 | Best Test: 0.1180
+Epoch  50 | Loss: 0.8241 | Train: 0.8000 | Val: 0.7640 | Test: 0.7650 | Best Test: 0.7660
+Epoch 100 | Loss: 0.0770 | Train: 0.9857 | Val: 0.7820 | Test: 0.7770 | Best Test: 0.7900
+Epoch 150 | Loss: 0.0483 | Train: 0.9929 | Val: 0.7660 | Test: 0.7930 | Best Test: 0.7900
+Epoch 200 | Loss: 0.0359 | Train: 0.9929 | Val: 0.7740 | Test: 0.7820 | Best Test: 0.7900
+
+Best Val Acc: 0.7880 at epoch 73
+Test Acc at Best Val: 0.7900
+Total Time: 2.77s
+
+Progress: 40/90 (44.4%)
+
+================================================================================
+Run 5 | Dataset: cora | Config: T_Adam+TRF+Homophily
+Seed: 46
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9453 | Train: 0.1571 | Val: 0.1680 | Test: 0.1450 | Best Test: 0.1450
+Epoch  50 | Loss: 0.9058 | Train: 0.7714 | Val: 0.7120 | Test: 0.7490 | Best Test: 0.7490
+Epoch 100 | Loss: 0.1184 | Train: 0.9786 | Val: 0.7700 | Test: 0.7810 | Best Test: 0.7980
+Epoch 150 | Loss: 0.0870 | Train: 0.9786 | Val: 0.7760 | Test: 0.7920 | Best Test: 0.7980
+Epoch 200 | Loss: 0.0277 | Train: 1.0000 | Val: 0.7500 | Test: 0.7830 | Best Test: 0.7980
+
+Best Val Acc: 0.7840 at epoch 116
+Test Acc at Best Val: 0.7980
+Total Time: 3.00s
+
+--------------------------------------------------------------------------------
+Configuration: T_Adam+TRF+Ricci
+--------------------------------------------------------------------------------
+
+Progress: 41/90 (45.6%)
+
+================================================================================
+Run 1 | Dataset: cora | Config: T_Adam+TRF+Ricci
+Seed: 42
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9450 | Train: 0.1429 | Val: 0.3160 | Test: 0.3160 | Best Test: 0.3160
+Epoch  50 | Loss: 0.7912 | Train: 0.8500 | Val: 0.7560 | Test: 0.7710 | Best Test: 0.7590
+Epoch 100 | Loss: 0.0775 | Train: 0.9929 | Val: 0.7720 | Test: 0.7770 | Best Test: 0.7860
+Epoch 150 | Loss: 0.0362 | Train: 0.9929 | Val: 0.7660 | Test: 0.7790 | Best Test: 0.7860
+Epoch 200 | Loss: 0.0377 | Train: 0.9929 | Val: 0.7640 | Test: 0.7710 | Best Test: 0.7860
+
+Best Val Acc: 0.7840 at epoch 62
+Test Acc at Best Val: 0.7860
+Total Time: 2.71s
+
+Progress: 42/90 (46.7%)
+
+================================================================================
+Run 2 | Dataset: cora | Config: T_Adam+TRF+Ricci
+Seed: 43
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9519 | Train: 0.1429 | Val: 0.1560 | Test: 0.1440 | Best Test: 0.1440
+Epoch  50 | Loss: 0.7326 | Train: 0.8143 | Val: 0.7680 | Test: 0.7690 | Best Test: 0.7690
+Epoch 100 | Loss: 0.0924 | Train: 0.9786 | Val: 0.7820 | Test: 0.7780 | Best Test: 0.7950
+Epoch 150 | Loss: 0.0396 | Train: 0.9929 | Val: 0.7700 | Test: 0.7720 | Best Test: 0.7950
+Epoch 200 | Loss: 0.0218 | Train: 1.0000 | Val: 0.7640 | Test: 0.7700 | Best Test: 0.7950
+
+Best Val Acc: 0.7960 at epoch 73
+Test Acc at Best Val: 0.7950
+Total Time: 2.89s
+
+Progress: 43/90 (47.8%)
+
+================================================================================
+Run 3 | Dataset: cora | Config: T_Adam+TRF+Ricci
+Seed: 44
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9498 | Train: 0.1714 | Val: 0.0740 | Test: 0.0920 | Best Test: 0.0920
+Epoch  50 | Loss: 0.8140 | Train: 0.8500 | Val: 0.7660 | Test: 0.7880 | Best Test: 0.7880
+Epoch 100 | Loss: 0.1177 | Train: 0.9786 | Val: 0.7580 | Test: 0.7680 | Best Test: 0.7880
+Epoch 150 | Loss: 0.0600 | Train: 0.9857 | Val: 0.7500 | Test: 0.7700 | Best Test: 0.7880
+Epoch 200 | Loss: 0.0292 | Train: 1.0000 | Val: 0.7460 | Test: 0.7690 | Best Test: 0.7880
+
+Best Val Acc: 0.7660 at epoch 48
+Test Acc at Best Val: 0.7880
+Total Time: 2.75s
+
+Progress: 44/90 (48.9%)
+
+================================================================================
+Run 4 | Dataset: cora | Config: T_Adam+TRF+Ricci
+Seed: 45
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9472 | Train: 0.1714 | Val: 0.1080 | Test: 0.1180 | Best Test: 0.1180
+Epoch  50 | Loss: 0.8241 | Train: 0.8000 | Val: 0.7640 | Test: 0.7650 | Best Test: 0.7660
+Epoch 100 | Loss: 0.0770 | Train: 0.9857 | Val: 0.7820 | Test: 0.7770 | Best Test: 0.7900
+Epoch 150 | Loss: 0.0483 | Train: 0.9929 | Val: 0.7660 | Test: 0.7930 | Best Test: 0.7900
+Epoch 200 | Loss: 0.0359 | Train: 0.9929 | Val: 0.7740 | Test: 0.7820 | Best Test: 0.7900
+
+Best Val Acc: 0.7880 at epoch 73
+Test Acc at Best Val: 0.7900
+Total Time: 2.92s
+
+Progress: 45/90 (50.0%)
+
+================================================================================
+Run 5 | Dataset: cora | Config: T_Adam+TRF+Ricci
+Seed: 46
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 22.4302
+  LR scale factor = exp(-0.1 × 22.4302) = 0.106137
+  Adjusted LR = 0.01 × 0.106137 = 0.001061
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.9453 | Train: 0.1571 | Val: 0.1680 | Test: 0.1450 | Best Test: 0.1450
+Epoch  50 | Loss: 0.9058 | Train: 0.7714 | Val: 0.7120 | Test: 0.7490 | Best Test: 0.7490
+Epoch 100 | Loss: 0.1183 | Train: 0.9786 | Val: 0.7700 | Test: 0.7810 | Best Test: 0.7980
+Epoch 150 | Loss: 0.0870 | Train: 0.9786 | Val: 0.7760 | Test: 0.7920 | Best Test: 0.7980
+Epoch 200 | Loss: 0.0277 | Train: 1.0000 | Val: 0.7500 | Test: 0.7830 | Best Test: 0.7980
+
+Best Val Acc: 0.7840 at epoch 116
+Test Acc at Best Val: 0.7980
+Total Time: 2.76s
+
+################################################################################
+# DATASET: citeseer
+################################################################################
+
+--------------------------------------------------------------------------------
+Configuration: Adam
+--------------------------------------------------------------------------------
+
+Progress: 46/90 (51.1%)
+
+================================================================================
+Run 1 | Dataset: citeseer | Config: Adam
+Seed: 42
+================================================================================
+Epoch   1 | Loss: 1.7966 | Train: 0.1250 | Val: 0.3620 | Test: 0.3530 | Best Test: 0.3530
+Epoch  50 | Loss: 0.0162 | Train: 0.9917 | Val: 0.6720 | Test: 0.6730 | Best Test: 0.6690
+Epoch 100 | Loss: 0.0575 | Train: 0.9750 | Val: 0.6640 | Test: 0.6410 | Best Test: 0.6630
+Epoch 150 | Loss: 0.0289 | Train: 0.9917 | Val: 0.6200 | Test: 0.6390 | Best Test: 0.6630
+Epoch 200 | Loss: 0.0228 | Train: 0.9917 | Val: 0.6520 | Test: 0.6420 | Best Test: 0.6630
+
+Best Val Acc: 0.6820 at epoch 73
+Test Acc at Best Val: 0.6630
+Total Time: 4.11s
+
+Progress: 47/90 (52.2%)
+
+================================================================================
+Run 2 | Dataset: citeseer | Config: Adam
+Seed: 43
+================================================================================
+Epoch   1 | Loss: 1.7944 | Train: 0.2000 | Val: 0.2140 | Test: 0.2150 | Best Test: 0.2150
+Epoch  50 | Loss: 0.0240 | Train: 1.0000 | Val: 0.6640 | Test: 0.6650 | Best Test: 0.7090
+Epoch 100 | Loss: 0.0225 | Train: 1.0000 | Val: 0.6400 | Test: 0.6640 | Best Test: 0.6500
+Epoch 150 | Loss: 0.0284 | Train: 0.9917 | Val: 0.6600 | Test: 0.6310 | Best Test: 0.6500
+Epoch 200 | Loss: 0.0329 | Train: 0.9917 | Val: 0.6400 | Test: 0.6420 | Best Test: 0.6500
+
+Best Val Acc: 0.6920 at epoch 89
+Test Acc at Best Val: 0.6500
+Total Time: 4.12s
+
+Progress: 48/90 (53.3%)
+
+================================================================================
+Run 3 | Dataset: citeseer | Config: Adam
+Seed: 44
+================================================================================
+Epoch   1 | Loss: 1.7934 | Train: 0.1667 | Val: 0.1380 | Test: 0.1600 | Best Test: 0.1600
+Epoch  50 | Loss: 0.0331 | Train: 0.9917 | Val: 0.6520 | Test: 0.6450 | Best Test: 0.6890
+Epoch 100 | Loss: 0.0218 | Train: 1.0000 | Val: 0.6620 | Test: 0.6450 | Best Test: 0.6890
+Epoch 150 | Loss: 0.0109 | Train: 1.0000 | Val: 0.6100 | Test: 0.6080 | Best Test: 0.6890
+Epoch 200 | Loss: 0.0131 | Train: 0.9917 | Val: 0.6380 | Test: 0.6420 | Best Test: 0.6890
+
+Best Val Acc: 0.6900 at epoch 5
+Test Acc at Best Val: 0.6890
+Total Time: 4.12s
+
+Progress: 49/90 (54.4%)
+
+================================================================================
+Run 4 | Dataset: citeseer | Config: Adam
+Seed: 45
+================================================================================
+Epoch   1 | Loss: 1.7964 | Train: 0.1750 | Val: 0.2460 | Test: 0.2100 | Best Test: 0.2100
+Epoch  50 | Loss: 0.0329 | Train: 0.9833 | Val: 0.6780 | Test: 0.6480 | Best Test: 0.6590
+Epoch 100 | Loss: 0.0685 | Train: 0.9667 | Val: 0.6680 | Test: 0.6590 | Best Test: 0.6590
+Epoch 150 | Loss: 0.0104 | Train: 1.0000 | Val: 0.6540 | Test: 0.6510 | Best Test: 0.6590
+Epoch 200 | Loss: 0.0097 | Train: 1.0000 | Val: 0.6480 | Test: 0.6360 | Best Test: 0.6590
+
+Best Val Acc: 0.6860 at epoch 46
+Test Acc at Best Val: 0.6590
+Total Time: 4.53s
+
+Progress: 50/90 (55.6%)
+
+================================================================================
+Run 5 | Dataset: citeseer | Config: Adam
+Seed: 46
+================================================================================
+Epoch   1 | Loss: 1.7934 | Train: 0.1833 | Val: 0.2360 | Test: 0.2220 | Best Test: 0.2220
+Epoch  50 | Loss: 0.0422 | Train: 0.9750 | Val: 0.6780 | Test: 0.6550 | Best Test: 0.6800
+Epoch 100 | Loss: 0.0213 | Train: 0.9917 | Val: 0.6320 | Test: 0.6100 | Best Test: 0.6740
+Epoch 150 | Loss: 0.0158 | Train: 1.0000 | Val: 0.6080 | Test: 0.6230 | Best Test: 0.6740
+Epoch 200 | Loss: 0.0079 | Train: 1.0000 | Val: 0.6380 | Test: 0.6400 | Best Test: 0.6740
+
+Best Val Acc: 0.7020 at epoch 87
+Test Acc at Best Val: 0.6740
+Total Time: 5.19s
+
+--------------------------------------------------------------------------------
+Configuration: T_Adam
+--------------------------------------------------------------------------------
+
+Progress: 51/90 (56.7%)
+
+================================================================================
+Run 1 | Dataset: citeseer | Config: T_Adam
+Seed: 42
+================================================================================
+Epoch   1 | Loss: 1.7966 | Train: 0.1250 | Val: 0.3600 | Test: 0.3500 | Best Test: 0.3500
+Epoch  50 | Loss: 0.0194 | Train: 0.9917 | Val: 0.6620 | Test: 0.6720 | Best Test: 0.6700
+Epoch 100 | Loss: 0.0563 | Train: 0.9750 | Val: 0.6760 | Test: 0.6520 | Best Test: 0.6770
+Epoch 150 | Loss: 0.0376 | Train: 0.9833 | Val: 0.6440 | Test: 0.6410 | Best Test: 0.6670
+Epoch 200 | Loss: 0.0607 | Train: 0.9917 | Val: 0.6520 | Test: 0.6550 | Best Test: 0.6670
+
+Best Val Acc: 0.6860 at epoch 116
+Test Acc at Best Val: 0.6670
+Total Time: 5.25s
+
+Progress: 52/90 (57.8%)
+
+================================================================================
+Run 2 | Dataset: citeseer | Config: T_Adam
+Seed: 43
+================================================================================
+Epoch   1 | Loss: 1.7944 | Train: 0.2000 | Val: 0.2140 | Test: 0.2150 | Best Test: 0.2150
+Epoch  50 | Loss: 0.0283 | Train: 1.0000 | Val: 0.6520 | Test: 0.6630 | Best Test: 0.7080
+Epoch 100 | Loss: 0.0088 | Train: 1.0000 | Val: 0.6600 | Test: 0.6330 | Best Test: 0.7080
+Epoch 150 | Loss: 0.0095 | Train: 1.0000 | Val: 0.6540 | Test: 0.6360 | Best Test: 0.7080
+Epoch 200 | Loss: 0.0202 | Train: 0.9917 | Val: 0.6800 | Test: 0.6640 | Best Test: 0.7080
+
+Best Val Acc: 0.6920 at epoch 8
+Test Acc at Best Val: 0.7080
+Total Time: 5.56s
+
+Progress: 53/90 (58.9%)
+
+================================================================================
+Run 3 | Dataset: citeseer | Config: T_Adam
+Seed: 44
+================================================================================
+Epoch   1 | Loss: 1.7934 | Train: 0.1667 | Val: 0.1380 | Test: 0.1600 | Best Test: 0.1600
+Epoch  50 | Loss: 0.0318 | Train: 0.9917 | Val: 0.6520 | Test: 0.6250 | Best Test: 0.6880
+Epoch 100 | Loss: 0.0144 | Train: 1.0000 | Val: 0.6200 | Test: 0.5980 | Best Test: 0.6880
+Epoch 150 | Loss: 0.0191 | Train: 1.0000 | Val: 0.6520 | Test: 0.6430 | Best Test: 0.6880
+Epoch 200 | Loss: 0.0251 | Train: 0.9833 | Val: 0.6360 | Test: 0.6240 | Best Test: 0.6880
+
+Best Val Acc: 0.6880 at epoch 6
+Test Acc at Best Val: 0.6880
+Total Time: 5.88s
+
+Progress: 54/90 (60.0%)
+
+================================================================================
+Run 4 | Dataset: citeseer | Config: T_Adam
+Seed: 45
+================================================================================
+Epoch   1 | Loss: 1.7964 | Train: 0.1750 | Val: 0.2460 | Test: 0.2090 | Best Test: 0.2090
+Epoch  50 | Loss: 0.0152 | Train: 1.0000 | Val: 0.6460 | Test: 0.6360 | Best Test: 0.6750
+Epoch 100 | Loss: 0.0400 | Train: 0.9833 | Val: 0.6560 | Test: 0.6440 | Best Test: 0.6750
+Epoch 150 | Loss: 0.0226 | Train: 1.0000 | Val: 0.6500 | Test: 0.6470 | Best Test: 0.6680
+Epoch 200 | Loss: 0.0167 | Train: 0.9917 | Val: 0.6560 | Test: 0.6310 | Best Test: 0.6670
+
+Best Val Acc: 0.6860 at epoch 163
+Test Acc at Best Val: 0.6670
+Total Time: 5.81s
+
+Progress: 55/90 (61.1%)
+
+================================================================================
+Run 5 | Dataset: citeseer | Config: T_Adam
+Seed: 46
+================================================================================
+Epoch   1 | Loss: 1.7934 | Train: 0.1833 | Val: 0.2340 | Test: 0.2220 | Best Test: 0.2220
+Epoch  50 | Loss: 0.0491 | Train: 0.9750 | Val: 0.6880 | Test: 0.6560 | Best Test: 0.6740
+Epoch 100 | Loss: 0.0157 | Train: 1.0000 | Val: 0.6260 | Test: 0.5880 | Best Test: 0.6740
+Epoch 150 | Loss: 0.0180 | Train: 1.0000 | Val: 0.6400 | Test: 0.6180 | Best Test: 0.6740
+Epoch 200 | Loss: 0.0041 | Train: 1.0000 | Val: 0.6420 | Test: 0.6390 | Best Test: 0.6740
+
+Best Val Acc: 0.6980 at epoch 7
+Test Acc at Best Val: 0.6740
+Total Time: 4.54s
+
+--------------------------------------------------------------------------------
+Configuration: T_Adam+TRF
+--------------------------------------------------------------------------------
+
+Progress: 56/90 (62.2%)
+
+================================================================================
+Run 1 | Dataset: citeseer | Config: T_Adam+TRF
+Seed: 42
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache MISS] trf
+    - Computing algebraic connectivity...
+      A = 0.0000
+    - Computing node connectivity...
+      Nc = 0
+    - Computing edge connectivity...
+      Ec = 0
+    - Computing global efficiency...
+      E = 0.0519
+    - Computing average path length...
+      L = 9.3297
+    - μG = 1.3682
+  [Cache STORED] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+Epoch   1 | Loss: 1.7966 | Train: 0.1250 | Val: 0.2100 | Test: 0.2220 | Best Test: 0.2220
+Epoch  50 | Loss: 1.6850 | Train: 0.3917 | Val: 0.4820 | Test: 0.4340 | Best Test: 0.4340
+Epoch 100 | Loss: 1.2981 | Train: 0.6833 | Val: 0.5740 | Test: 0.5340 | Best Test: 0.5340
+Epoch 150 | Loss: 0.6786 | Train: 0.8667 | Val: 0.6600 | Test: 0.6440 | Best Test: 0.6400
+Epoch 200 | Loss: 0.3809 | Train: 0.9083 | Val: 0.6480 | Test: 0.6530 | Best Test: 0.6400
+
+Best Val Acc: 0.6600 at epoch 145
+Test Acc at Best Val: 0.6400
+Total Time: 4.58s
+
+Progress: 57/90 (63.3%)
+
+================================================================================
+Run 2 | Dataset: citeseer | Config: T_Adam+TRF
+Seed: 43
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+Epoch   1 | Loss: 1.7944 | Train: 0.2000 | Val: 0.1840 | Test: 0.1940 | Best Test: 0.1940
+Epoch  50 | Loss: 1.6974 | Train: 0.3500 | Val: 0.2520 | Test: 0.2740 | Best Test: 0.2740
+Epoch 100 | Loss: 1.2745 | Train: 0.7000 | Val: 0.6620 | Test: 0.6400 | Best Test: 0.6370
+Epoch 150 | Loss: 0.7221 | Train: 0.8250 | Val: 0.7080 | Test: 0.6960 | Best Test: 0.6970
+Epoch 200 | Loss: 0.3525 | Train: 0.9417 | Val: 0.6780 | Test: 0.6820 | Best Test: 0.6970
+
+Best Val Acc: 0.7080 at epoch 148
+Test Acc at Best Val: 0.6970
+Total Time: 4.51s
+
+Progress: 58/90 (64.4%)
+
+================================================================================
+Run 3 | Dataset: citeseer | Config: T_Adam+TRF
+Seed: 44
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+Epoch   1 | Loss: 1.7934 | Train: 0.1667 | Val: 0.1380 | Test: 0.1600 | Best Test: 0.1600
+Epoch  50 | Loss: 1.6968 | Train: 0.5167 | Val: 0.3960 | Test: 0.4480 | Best Test: 0.4480
+Epoch 100 | Loss: 1.1881 | Train: 0.8250 | Val: 0.6780 | Test: 0.6870 | Best Test: 0.6820
+Epoch 150 | Loss: 0.5413 | Train: 0.9000 | Val: 0.6780 | Test: 0.6790 | Best Test: 0.6910
+Epoch 200 | Loss: 0.2944 | Train: 0.9167 | Val: 0.6620 | Test: 0.6670 | Best Test: 0.6910
+
+Best Val Acc: 0.6900 at epoch 117
+Test Acc at Best Val: 0.6910
+Total Time: 4.61s
+
+Progress: 59/90 (65.6%)
+
+================================================================================
+Run 4 | Dataset: citeseer | Config: T_Adam+TRF
+Seed: 45
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+Epoch   1 | Loss: 1.7964 | Train: 0.1750 | Val: 0.2340 | Test: 0.1820 | Best Test: 0.1820
+Epoch  50 | Loss: 1.6987 | Train: 0.4667 | Val: 0.4380 | Test: 0.4320 | Best Test: 0.4320
+Epoch 100 | Loss: 1.2121 | Train: 0.7667 | Val: 0.6620 | Test: 0.6480 | Best Test: 0.6490
+Epoch 150 | Loss: 0.6789 | Train: 0.8333 | Val: 0.6780 | Test: 0.6740 | Best Test: 0.6790
+Epoch 200 | Loss: 0.3377 | Train: 0.9083 | Val: 0.6640 | Test: 0.6700 | Best Test: 0.6820
+
+Best Val Acc: 0.6980 at epoch 162
+Test Acc at Best Val: 0.6820
+Total Time: 4.60s
+
+Progress: 60/90 (66.7%)
+
+================================================================================
+Run 5 | Dataset: citeseer | Config: T_Adam+TRF
+Seed: 46
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+Epoch   1 | Loss: 1.7934 | Train: 0.1833 | Val: 0.1740 | Test: 0.1820 | Best Test: 0.1820
+Epoch  50 | Loss: 1.6722 | Train: 0.5750 | Val: 0.5060 | Test: 0.5040 | Best Test: 0.5040
+Epoch 100 | Loss: 1.2280 | Train: 0.7417 | Val: 0.6280 | Test: 0.6120 | Best Test: 0.6120
+Epoch 150 | Loss: 0.5943 | Train: 0.9083 | Val: 0.6840 | Test: 0.6710 | Best Test: 0.6680
+Epoch 200 | Loss: 0.3114 | Train: 0.9167 | Val: 0.6600 | Test: 0.6760 | Best Test: 0.6710
+
+Best Val Acc: 0.6860 at epoch 153
+Test Acc at Best Val: 0.6710
+Total Time: 4.82s
+
+--------------------------------------------------------------------------------
+Configuration: T_Adam+AntiHub
+--------------------------------------------------------------------------------
+
+Progress: 61/90 (67.8%)
+
+================================================================================
+Run 1 | Dataset: citeseer | Config: T_Adam+AntiHub
+Seed: 42
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache MISS] node_weights
+Computing node weights: Anti-Hub Dominance mode
+  Formula: α(v) = 1/log(degree(v) + ε), where ε=1e-8
+  Purpose: Penalize hub gradients, emphasize peripheral nodes
+  Weight range: [0.2171, 100000000.0000]
+  Mean weight: 1442742.0000
+
+  [Cache STORED] node_weights
+Epoch   1 | Loss: 1.7966 | Train: 0.1250 | Val: 0.2100 | Test: 0.2220 | Best Test: 0.2220
+Epoch  50 | Loss: 1.6850 | Train: 0.3917 | Val: 0.4820 | Test: 0.4340 | Best Test: 0.4340
+Epoch 100 | Loss: 1.2981 | Train: 0.6833 | Val: 0.5740 | Test: 0.5340 | Best Test: 0.5340
+Epoch 150 | Loss: 0.6786 | Train: 0.8667 | Val: 0.6600 | Test: 0.6440 | Best Test: 0.6400
+Epoch 200 | Loss: 0.3809 | Train: 0.9083 | Val: 0.6480 | Test: 0.6530 | Best Test: 0.6400
+
+Best Val Acc: 0.6600 at epoch 145
+Test Acc at Best Val: 0.6400
+Total Time: 5.38s
+
+Progress: 62/90 (68.9%)
+
+================================================================================
+Run 2 | Dataset: citeseer | Config: T_Adam+AntiHub
+Seed: 43
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7944 | Train: 0.2000 | Val: 0.1840 | Test: 0.1940 | Best Test: 0.1940
+Epoch  50 | Loss: 1.6974 | Train: 0.3500 | Val: 0.2520 | Test: 0.2740 | Best Test: 0.2740
+Epoch 100 | Loss: 1.2745 | Train: 0.7000 | Val: 0.6620 | Test: 0.6400 | Best Test: 0.6370
+Epoch 150 | Loss: 0.7221 | Train: 0.8250 | Val: 0.7080 | Test: 0.6960 | Best Test: 0.6970
+Epoch 200 | Loss: 0.3525 | Train: 0.9417 | Val: 0.6780 | Test: 0.6820 | Best Test: 0.6970
+
+Best Val Acc: 0.7080 at epoch 148
+Test Acc at Best Val: 0.6970
+Total Time: 5.34s
+
+Progress: 63/90 (70.0%)
+
+================================================================================
+Run 3 | Dataset: citeseer | Config: T_Adam+AntiHub
+Seed: 44
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7934 | Train: 0.1667 | Val: 0.1380 | Test: 0.1600 | Best Test: 0.1600
+Epoch  50 | Loss: 1.6968 | Train: 0.5167 | Val: 0.3960 | Test: 0.4480 | Best Test: 0.4480
+Epoch 100 | Loss: 1.1881 | Train: 0.8250 | Val: 0.6780 | Test: 0.6870 | Best Test: 0.6820
+Epoch 150 | Loss: 0.5413 | Train: 0.9000 | Val: 0.6780 | Test: 0.6790 | Best Test: 0.6910
+Epoch 200 | Loss: 0.2944 | Train: 0.9167 | Val: 0.6620 | Test: 0.6670 | Best Test: 0.6910
+
+Best Val Acc: 0.6900 at epoch 117
+Test Acc at Best Val: 0.6910
+Total Time: 5.25s
+
+Progress: 64/90 (71.1%)
+
+================================================================================
+Run 4 | Dataset: citeseer | Config: T_Adam+AntiHub
+Seed: 45
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7964 | Train: 0.1750 | Val: 0.2340 | Test: 0.1820 | Best Test: 0.1820
+Epoch  50 | Loss: 1.6987 | Train: 0.4667 | Val: 0.4380 | Test: 0.4320 | Best Test: 0.4320
+Epoch 100 | Loss: 1.2121 | Train: 0.7667 | Val: 0.6620 | Test: 0.6480 | Best Test: 0.6490
+Epoch 150 | Loss: 0.6789 | Train: 0.8333 | Val: 0.6780 | Test: 0.6740 | Best Test: 0.6790
+Epoch 200 | Loss: 0.3377 | Train: 0.9083 | Val: 0.6640 | Test: 0.6700 | Best Test: 0.6820
+
+Best Val Acc: 0.6980 at epoch 162
+Test Acc at Best Val: 0.6820
+Total Time: 5.27s
+
+Progress: 65/90 (72.2%)
+
+================================================================================
+Run 5 | Dataset: citeseer | Config: T_Adam+AntiHub
+Seed: 46
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7934 | Train: 0.1833 | Val: 0.1740 | Test: 0.1820 | Best Test: 0.1820
+Epoch  50 | Loss: 1.6722 | Train: 0.5750 | Val: 0.5060 | Test: 0.5040 | Best Test: 0.5040
+Epoch 100 | Loss: 1.2280 | Train: 0.7417 | Val: 0.6280 | Test: 0.6120 | Best Test: 0.6120
+Epoch 150 | Loss: 0.5943 | Train: 0.9083 | Val: 0.6840 | Test: 0.6710 | Best Test: 0.6680
+Epoch 200 | Loss: 0.3114 | Train: 0.9167 | Val: 0.6600 | Test: 0.6760 | Best Test: 0.6710
+
+Best Val Acc: 0.6860 at epoch 153
+Test Acc at Best Val: 0.6710
+Total Time: 5.26s
+
+--------------------------------------------------------------------------------
+Configuration: T_Adam+Homophily
+--------------------------------------------------------------------------------
+
+Progress: 66/90 (73.3%)
+
+================================================================================
+Run 1 | Dataset: citeseer | Config: T_Adam+Homophily
+Seed: 42
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache MISS] node_weights
+Computing node weights: Homophily-based mode
+  Formula: α(v) = 1 + tanh(H_v)
+  where H_v = mean cosine similarity between node v and its neighbors
+  Purpose: Accelerate learning in homogeneous regions
+  Weight range: [1.0000, 1.6982]
+  Mean weight: 1.1965
+
+  [Cache STORED] node_weights
+Epoch   1 | Loss: 1.7966 | Train: 0.1250 | Val: 0.2100 | Test: 0.2220 | Best Test: 0.2220
+Epoch  50 | Loss: 1.6850 | Train: 0.3917 | Val: 0.4820 | Test: 0.4340 | Best Test: 0.4340
+Epoch 100 | Loss: 1.2981 | Train: 0.6833 | Val: 0.5740 | Test: 0.5340 | Best Test: 0.5340
+Epoch 150 | Loss: 0.6786 | Train: 0.8667 | Val: 0.6600 | Test: 0.6440 | Best Test: 0.6400
+Epoch 200 | Loss: 0.3809 | Train: 0.9083 | Val: 0.6480 | Test: 0.6530 | Best Test: 0.6400
+
+Best Val Acc: 0.6600 at epoch 145
+Test Acc at Best Val: 0.6400
+Total Time: 4.80s
+
+Progress: 67/90 (74.4%)
+
+================================================================================
+Run 2 | Dataset: citeseer | Config: T_Adam+Homophily
+Seed: 43
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7944 | Train: 0.2000 | Val: 0.1840 | Test: 0.1940 | Best Test: 0.1940
+Epoch  50 | Loss: 1.6974 | Train: 0.3500 | Val: 0.2520 | Test: 0.2740 | Best Test: 0.2740
+Epoch 100 | Loss: 1.2745 | Train: 0.7000 | Val: 0.6620 | Test: 0.6400 | Best Test: 0.6370
+Epoch 150 | Loss: 0.7221 | Train: 0.8250 | Val: 0.7080 | Test: 0.6960 | Best Test: 0.6970
+Epoch 200 | Loss: 0.3525 | Train: 0.9417 | Val: 0.6780 | Test: 0.6820 | Best Test: 0.6970
+
+Best Val Acc: 0.7080 at epoch 148
+Test Acc at Best Val: 0.6970
+Total Time: 4.32s
+
+Progress: 68/90 (75.6%)
+
+================================================================================
+Run 3 | Dataset: citeseer | Config: T_Adam+Homophily
+Seed: 44
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7934 | Train: 0.1667 | Val: 0.1380 | Test: 0.1600 | Best Test: 0.1600
+Epoch  50 | Loss: 1.6968 | Train: 0.5167 | Val: 0.3960 | Test: 0.4480 | Best Test: 0.4480
+Epoch 100 | Loss: 1.1881 | Train: 0.8250 | Val: 0.6780 | Test: 0.6870 | Best Test: 0.6820
+Epoch 150 | Loss: 0.5413 | Train: 0.9000 | Val: 0.6780 | Test: 0.6790 | Best Test: 0.6910
+Epoch 200 | Loss: 0.2944 | Train: 0.9167 | Val: 0.6620 | Test: 0.6670 | Best Test: 0.6910
+
+Best Val Acc: 0.6900 at epoch 117
+Test Acc at Best Val: 0.6910
+Total Time: 4.32s
+
+Progress: 69/90 (76.7%)
+
+================================================================================
+Run 4 | Dataset: citeseer | Config: T_Adam+Homophily
+Seed: 45
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7964 | Train: 0.1750 | Val: 0.2340 | Test: 0.1820 | Best Test: 0.1820
+Epoch  50 | Loss: 1.6987 | Train: 0.4667 | Val: 0.4380 | Test: 0.4320 | Best Test: 0.4320
+Epoch 100 | Loss: 1.2121 | Train: 0.7667 | Val: 0.6620 | Test: 0.6480 | Best Test: 0.6490
+Epoch 150 | Loss: 0.6789 | Train: 0.8333 | Val: 0.6780 | Test: 0.6740 | Best Test: 0.6790
+Epoch 200 | Loss: 0.3377 | Train: 0.9083 | Val: 0.6640 | Test: 0.6700 | Best Test: 0.6820
+
+Best Val Acc: 0.6980 at epoch 162
+Test Acc at Best Val: 0.6820
+Total Time: 4.45s
+
+Progress: 70/90 (77.8%)
+
+================================================================================
+Run 5 | Dataset: citeseer | Config: T_Adam+Homophily
+Seed: 46
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7934 | Train: 0.1833 | Val: 0.1740 | Test: 0.1820 | Best Test: 0.1820
+Epoch  50 | Loss: 1.6722 | Train: 0.5750 | Val: 0.5060 | Test: 0.5040 | Best Test: 0.5040
+Epoch 100 | Loss: 1.2280 | Train: 0.7417 | Val: 0.6280 | Test: 0.6120 | Best Test: 0.6120
+Epoch 150 | Loss: 0.5943 | Train: 0.9083 | Val: 0.6840 | Test: 0.6710 | Best Test: 0.6680
+Epoch 200 | Loss: 0.3114 | Train: 0.9167 | Val: 0.6600 | Test: 0.6760 | Best Test: 0.6710
+
+Best Val Acc: 0.6860 at epoch 153
+Test Acc at Best Val: 0.6710
+Total Time: 4.32s
+
+--------------------------------------------------------------------------------
+Configuration: T_Adam+Ricci
+--------------------------------------------------------------------------------
+
+Progress: 71/90 (78.9%)
+
+================================================================================
+Run 1 | Dataset: citeseer | Config: T_Adam+Ricci
+Seed: 42
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache MISS] node_weights
+Computing node weights: Ricci Curvature mode
+  Formula: α(v) = exp(-κ_v)
+  where κ_v is the Ollivier-Ricci curvature
+  Purpose: Emphasize bridge nodes between communities
+  Weight range: [1.0000, 2.7183]
+  Mean weight: 2.4900
+
+  [Cache STORED] node_weights
+Epoch   1 | Loss: 1.7966 | Train: 0.1250 | Val: 0.2100 | Test: 0.2220 | Best Test: 0.2220
+Epoch  50 | Loss: 1.6850 | Train: 0.3917 | Val: 0.4820 | Test: 0.4340 | Best Test: 0.4340
+Epoch 100 | Loss: 1.2981 | Train: 0.6833 | Val: 0.5740 | Test: 0.5340 | Best Test: 0.5340
+Epoch 150 | Loss: 0.6786 | Train: 0.8667 | Val: 0.6600 | Test: 0.6440 | Best Test: 0.6400
+Epoch 200 | Loss: 0.3809 | Train: 0.9083 | Val: 0.6480 | Test: 0.6530 | Best Test: 0.6400
+
+Best Val Acc: 0.6600 at epoch 145
+Test Acc at Best Val: 0.6400
+Total Time: 4.28s
+
+Progress: 72/90 (80.0%)
+
+================================================================================
+Run 2 | Dataset: citeseer | Config: T_Adam+Ricci
+Seed: 43
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7944 | Train: 0.2000 | Val: 0.1840 | Test: 0.1940 | Best Test: 0.1940
+Epoch  50 | Loss: 1.6974 | Train: 0.3500 | Val: 0.2520 | Test: 0.2740 | Best Test: 0.2740
+Epoch 100 | Loss: 1.2745 | Train: 0.7000 | Val: 0.6620 | Test: 0.6400 | Best Test: 0.6370
+Epoch 150 | Loss: 0.7221 | Train: 0.8250 | Val: 0.7080 | Test: 0.6960 | Best Test: 0.6970
+Epoch 200 | Loss: 0.3525 | Train: 0.9417 | Val: 0.6780 | Test: 0.6820 | Best Test: 0.6970
+
+Best Val Acc: 0.7080 at epoch 148
+Test Acc at Best Val: 0.6970
+Total Time: 4.33s
+
+Progress: 73/90 (81.1%)
+
+================================================================================
+Run 3 | Dataset: citeseer | Config: T_Adam+Ricci
+Seed: 44
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7934 | Train: 0.1667 | Val: 0.1380 | Test: 0.1600 | Best Test: 0.1600
+Epoch  50 | Loss: 1.6968 | Train: 0.5167 | Val: 0.3960 | Test: 0.4480 | Best Test: 0.4480
+Epoch 100 | Loss: 1.1881 | Train: 0.8250 | Val: 0.6780 | Test: 0.6870 | Best Test: 0.6820
+Epoch 150 | Loss: 0.5413 | Train: 0.9000 | Val: 0.6780 | Test: 0.6790 | Best Test: 0.6910
+Epoch 200 | Loss: 0.2944 | Train: 0.9167 | Val: 0.6620 | Test: 0.6670 | Best Test: 0.6910
+
+Best Val Acc: 0.6900 at epoch 117
+Test Acc at Best Val: 0.6910
+Total Time: 5.62s
+
+Progress: 74/90 (82.2%)
+
+================================================================================
+Run 4 | Dataset: citeseer | Config: T_Adam+Ricci
+Seed: 45
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7964 | Train: 0.1750 | Val: 0.2340 | Test: 0.1820 | Best Test: 0.1820
+Epoch  50 | Loss: 1.6987 | Train: 0.4667 | Val: 0.4380 | Test: 0.4320 | Best Test: 0.4320
+Epoch 100 | Loss: 1.2121 | Train: 0.7667 | Val: 0.6620 | Test: 0.6480 | Best Test: 0.6490
+Epoch 150 | Loss: 0.6789 | Train: 0.8333 | Val: 0.6780 | Test: 0.6740 | Best Test: 0.6790
+Epoch 200 | Loss: 0.3377 | Train: 0.9083 | Val: 0.6640 | Test: 0.6700 | Best Test: 0.6820
+
+Best Val Acc: 0.6980 at epoch 162
+Test Acc at Best Val: 0.6820
+Total Time: 5.42s
+
+Progress: 75/90 (83.3%)
+
+================================================================================
+Run 5 | Dataset: citeseer | Config: T_Adam+Ricci
+Seed: 46
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7934 | Train: 0.1833 | Val: 0.1740 | Test: 0.1820 | Best Test: 0.1820
+Epoch  50 | Loss: 1.6722 | Train: 0.5750 | Val: 0.5060 | Test: 0.5040 | Best Test: 0.5040
+Epoch 100 | Loss: 1.2280 | Train: 0.7417 | Val: 0.6280 | Test: 0.6120 | Best Test: 0.6120
+Epoch 150 | Loss: 0.5943 | Train: 0.9083 | Val: 0.6840 | Test: 0.6710 | Best Test: 0.6680
+Epoch 200 | Loss: 0.3114 | Train: 0.9167 | Val: 0.6600 | Test: 0.6760 | Best Test: 0.6710
+
+Best Val Acc: 0.6860 at epoch 153
+Test Acc at Best Val: 0.6710
+Total Time: 5.32s
+
+--------------------------------------------------------------------------------
+Configuration: T_Adam+TRF+AntiHub
+--------------------------------------------------------------------------------
+
+Progress: 76/90 (84.4%)
+
+================================================================================
+Run 1 | Dataset: citeseer | Config: T_Adam+TRF+AntiHub
+Seed: 42
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7966 | Train: 0.1250 | Val: 0.2100 | Test: 0.2220 | Best Test: 0.2220
+Epoch  50 | Loss: 1.6850 | Train: 0.3917 | Val: 0.4820 | Test: 0.4340 | Best Test: 0.4340
+Epoch 100 | Loss: 1.2981 | Train: 0.6833 | Val: 0.5740 | Test: 0.5340 | Best Test: 0.5340
+Epoch 150 | Loss: 0.6786 | Train: 0.8667 | Val: 0.6600 | Test: 0.6440 | Best Test: 0.6400
+Epoch 200 | Loss: 0.3809 | Train: 0.9083 | Val: 0.6480 | Test: 0.6530 | Best Test: 0.6400
+
+Best Val Acc: 0.6600 at epoch 145
+Test Acc at Best Val: 0.6400
+Total Time: 5.44s
+
+Progress: 77/90 (85.6%)
+
+================================================================================
+Run 2 | Dataset: citeseer | Config: T_Adam+TRF+AntiHub
+Seed: 43
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7944 | Train: 0.2000 | Val: 0.1840 | Test: 0.1940 | Best Test: 0.1940
+Epoch  50 | Loss: 1.6974 | Train: 0.3500 | Val: 0.2520 | Test: 0.2740 | Best Test: 0.2740
+Epoch 100 | Loss: 1.2745 | Train: 0.7000 | Val: 0.6620 | Test: 0.6400 | Best Test: 0.6370
+Epoch 150 | Loss: 0.7221 | Train: 0.8250 | Val: 0.7080 | Test: 0.6960 | Best Test: 0.6970
+Epoch 200 | Loss: 0.3525 | Train: 0.9417 | Val: 0.6780 | Test: 0.6820 | Best Test: 0.6970
+
+Best Val Acc: 0.7080 at epoch 148
+Test Acc at Best Val: 0.6970
+Total Time: 5.56s
+
+Progress: 78/90 (86.7%)
+
+================================================================================
+Run 3 | Dataset: citeseer | Config: T_Adam+TRF+AntiHub
+Seed: 44
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7934 | Train: 0.1667 | Val: 0.1380 | Test: 0.1600 | Best Test: 0.1600
+Epoch  50 | Loss: 1.6968 | Train: 0.5167 | Val: 0.3960 | Test: 0.4480 | Best Test: 0.4480
+Epoch 100 | Loss: 1.1881 | Train: 0.8250 | Val: 0.6780 | Test: 0.6870 | Best Test: 0.6820
+Epoch 150 | Loss: 0.5413 | Train: 0.9000 | Val: 0.6780 | Test: 0.6790 | Best Test: 0.6910
+Epoch 200 | Loss: 0.2944 | Train: 0.9167 | Val: 0.6620 | Test: 0.6670 | Best Test: 0.6910
+
+Best Val Acc: 0.6900 at epoch 117
+Test Acc at Best Val: 0.6910
+Total Time: 4.60s
+
+Progress: 79/90 (87.8%)
+
+================================================================================
+Run 4 | Dataset: citeseer | Config: T_Adam+TRF+AntiHub
+Seed: 45
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7964 | Train: 0.1750 | Val: 0.2340 | Test: 0.1820 | Best Test: 0.1820
+Epoch  50 | Loss: 1.6987 | Train: 0.4667 | Val: 0.4380 | Test: 0.4320 | Best Test: 0.4320
+Epoch 100 | Loss: 1.2121 | Train: 0.7667 | Val: 0.6620 | Test: 0.6480 | Best Test: 0.6490
+Epoch 150 | Loss: 0.6789 | Train: 0.8333 | Val: 0.6780 | Test: 0.6740 | Best Test: 0.6790
+Epoch 200 | Loss: 0.3377 | Train: 0.9083 | Val: 0.6640 | Test: 0.6700 | Best Test: 0.6820
+
+Best Val Acc: 0.6980 at epoch 162
+Test Acc at Best Val: 0.6820
+Total Time: 4.25s
+
+Progress: 80/90 (88.9%)
+
+================================================================================
+Run 5 | Dataset: citeseer | Config: T_Adam+TRF+AntiHub
+Seed: 46
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7934 | Train: 0.1833 | Val: 0.1740 | Test: 0.1820 | Best Test: 0.1820
+Epoch  50 | Loss: 1.6722 | Train: 0.5750 | Val: 0.5060 | Test: 0.5040 | Best Test: 0.5040
+Epoch 100 | Loss: 1.2280 | Train: 0.7417 | Val: 0.6280 | Test: 0.6120 | Best Test: 0.6120
+Epoch 150 | Loss: 0.5943 | Train: 0.9083 | Val: 0.6840 | Test: 0.6710 | Best Test: 0.6680
+Epoch 200 | Loss: 0.3114 | Train: 0.9167 | Val: 0.6600 | Test: 0.6760 | Best Test: 0.6710
+
+Best Val Acc: 0.6860 at epoch 153
+Test Acc at Best Val: 0.6710
+Total Time: 4.28s
+
+--------------------------------------------------------------------------------
+Configuration: T_Adam+TRF+Homophily
+--------------------------------------------------------------------------------
+
+Progress: 81/90 (90.0%)
+
+================================================================================
+Run 1 | Dataset: citeseer | Config: T_Adam+TRF+Homophily
+Seed: 42
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7966 | Train: 0.1250 | Val: 0.2100 | Test: 0.2220 | Best Test: 0.2220
+Epoch  50 | Loss: 1.6850 | Train: 0.3917 | Val: 0.4820 | Test: 0.4340 | Best Test: 0.4340
+Epoch 100 | Loss: 1.2981 | Train: 0.6833 | Val: 0.5740 | Test: 0.5340 | Best Test: 0.5340
+Epoch 150 | Loss: 0.6786 | Train: 0.8667 | Val: 0.6600 | Test: 0.6440 | Best Test: 0.6400
+Epoch 200 | Loss: 0.3809 | Train: 0.9083 | Val: 0.6480 | Test: 0.6530 | Best Test: 0.6400
+
+Best Val Acc: 0.6600 at epoch 145
+Test Acc at Best Val: 0.6400
+Total Time: 4.35s
+
+Progress: 82/90 (91.1%)
+
+================================================================================
+Run 2 | Dataset: citeseer | Config: T_Adam+TRF+Homophily
+Seed: 43
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7944 | Train: 0.2000 | Val: 0.1840 | Test: 0.1940 | Best Test: 0.1940
+Epoch  50 | Loss: 1.6974 | Train: 0.3500 | Val: 0.2520 | Test: 0.2740 | Best Test: 0.2740
+Epoch 100 | Loss: 1.2745 | Train: 0.7000 | Val: 0.6620 | Test: 0.6400 | Best Test: 0.6370
+Epoch 150 | Loss: 0.7221 | Train: 0.8250 | Val: 0.7080 | Test: 0.6960 | Best Test: 0.6970
+Epoch 200 | Loss: 0.3525 | Train: 0.9417 | Val: 0.6780 | Test: 0.6820 | Best Test: 0.6970
+
+Best Val Acc: 0.7080 at epoch 148
+Test Acc at Best Val: 0.6970
+Total Time: 4.40s
+
+Progress: 83/90 (92.2%)
+
+================================================================================
+Run 3 | Dataset: citeseer | Config: T_Adam+TRF+Homophily
+Seed: 44
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7934 | Train: 0.1667 | Val: 0.1380 | Test: 0.1600 | Best Test: 0.1600
+Epoch  50 | Loss: 1.6968 | Train: 0.5167 | Val: 0.3960 | Test: 0.4480 | Best Test: 0.4480
+Epoch 100 | Loss: 1.1881 | Train: 0.8250 | Val: 0.6780 | Test: 0.6870 | Best Test: 0.6820
+Epoch 150 | Loss: 0.5413 | Train: 0.9000 | Val: 0.6780 | Test: 0.6790 | Best Test: 0.6910
+Epoch 200 | Loss: 0.2944 | Train: 0.9167 | Val: 0.6620 | Test: 0.6670 | Best Test: 0.6910
+
+Best Val Acc: 0.6900 at epoch 117
+Test Acc at Best Val: 0.6910
+Total Time: 4.33s
+
+Progress: 84/90 (93.3%)
+
+================================================================================
+Run 4 | Dataset: citeseer | Config: T_Adam+TRF+Homophily
+Seed: 45
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7964 | Train: 0.1750 | Val: 0.2340 | Test: 0.1820 | Best Test: 0.1820
+Epoch  50 | Loss: 1.6987 | Train: 0.4667 | Val: 0.4380 | Test: 0.4320 | Best Test: 0.4320
+Epoch 100 | Loss: 1.2121 | Train: 0.7667 | Val: 0.6620 | Test: 0.6480 | Best Test: 0.6490
+Epoch 150 | Loss: 0.6789 | Train: 0.8333 | Val: 0.6780 | Test: 0.6740 | Best Test: 0.6790
+Epoch 200 | Loss: 0.3377 | Train: 0.9083 | Val: 0.6640 | Test: 0.6700 | Best Test: 0.6820
+
+Best Val Acc: 0.6980 at epoch 162
+Test Acc at Best Val: 0.6820
+Total Time: 4.32s
+
+Progress: 85/90 (94.4%)
+
+================================================================================
+Run 5 | Dataset: citeseer | Config: T_Adam+TRF+Homophily
+Seed: 46
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7934 | Train: 0.1833 | Val: 0.1740 | Test: 0.1820 | Best Test: 0.1820
+Epoch  50 | Loss: 1.6722 | Train: 0.5750 | Val: 0.5060 | Test: 0.5040 | Best Test: 0.5040
+Epoch 100 | Loss: 1.2280 | Train: 0.7417 | Val: 0.6280 | Test: 0.6120 | Best Test: 0.6120
+Epoch 150 | Loss: 0.5943 | Train: 0.9083 | Val: 0.6840 | Test: 0.6710 | Best Test: 0.6680
+Epoch 200 | Loss: 0.3114 | Train: 0.9167 | Val: 0.6600 | Test: 0.6760 | Best Test: 0.6710
+
+Best Val Acc: 0.6860 at epoch 153
+Test Acc at Best Val: 0.6710
+Total Time: 4.34s
+
+--------------------------------------------------------------------------------
+Configuration: T_Adam+TRF+Ricci
+--------------------------------------------------------------------------------
+
+Progress: 86/90 (95.6%)
+
+================================================================================
+Run 1 | Dataset: citeseer | Config: T_Adam+TRF+Ricci
+Seed: 42
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7966 | Train: 0.1250 | Val: 0.2100 | Test: 0.2220 | Best Test: 0.2220
+Epoch  50 | Loss: 1.6850 | Train: 0.3917 | Val: 0.4820 | Test: 0.4340 | Best Test: 0.4340
+Epoch 100 | Loss: 1.2981 | Train: 0.6833 | Val: 0.5740 | Test: 0.5340 | Best Test: 0.5340
+Epoch 150 | Loss: 0.6786 | Train: 0.8667 | Val: 0.6600 | Test: 0.6440 | Best Test: 0.6400
+Epoch 200 | Loss: 0.3809 | Train: 0.9083 | Val: 0.6480 | Test: 0.6530 | Best Test: 0.6400
+
+Best Val Acc: 0.6600 at epoch 145
+Test Acc at Best Val: 0.6400
+Total Time: 4.30s
+
+Progress: 87/90 (96.7%)
+
+================================================================================
+Run 2 | Dataset: citeseer | Config: T_Adam+TRF+Ricci
+Seed: 43
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7944 | Train: 0.2000 | Val: 0.1840 | Test: 0.1940 | Best Test: 0.1940
+Epoch  50 | Loss: 1.6974 | Train: 0.3500 | Val: 0.2520 | Test: 0.2740 | Best Test: 0.2740
+Epoch 100 | Loss: 1.2745 | Train: 0.7000 | Val: 0.6620 | Test: 0.6400 | Best Test: 0.6370
+Epoch 150 | Loss: 0.7221 | Train: 0.8250 | Val: 0.7080 | Test: 0.6960 | Best Test: 0.6970
+Epoch 200 | Loss: 0.3525 | Train: 0.9417 | Val: 0.6780 | Test: 0.6820 | Best Test: 0.6970
+
+Best Val Acc: 0.7080 at epoch 148
+Test Acc at Best Val: 0.6970
+Total Time: 4.35s
+
+Progress: 88/90 (97.8%)
+
+================================================================================
+Run 3 | Dataset: citeseer | Config: T_Adam+TRF+Ricci
+Seed: 44
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7934 | Train: 0.1667 | Val: 0.1380 | Test: 0.1600 | Best Test: 0.1600
+Epoch  50 | Loss: 1.6968 | Train: 0.5167 | Val: 0.3960 | Test: 0.4480 | Best Test: 0.4480
+Epoch 100 | Loss: 1.1881 | Train: 0.8250 | Val: 0.6780 | Test: 0.6870 | Best Test: 0.6820
+Epoch 150 | Loss: 0.5413 | Train: 0.9000 | Val: 0.6780 | Test: 0.6790 | Best Test: 0.6910
+Epoch 200 | Loss: 0.2944 | Train: 0.9167 | Val: 0.6620 | Test: 0.6670 | Best Test: 0.6910
+
+Best Val Acc: 0.6900 at epoch 117
+Test Acc at Best Val: 0.6910
+Total Time: 4.27s
+
+Progress: 89/90 (98.9%)
+
+================================================================================
+Run 4 | Dataset: citeseer | Config: T_Adam+TRF+Ricci
+Seed: 45
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7964 | Train: 0.1750 | Val: 0.2340 | Test: 0.1820 | Best Test: 0.1820
+Epoch  50 | Loss: 1.6987 | Train: 0.4667 | Val: 0.4380 | Test: 0.4320 | Best Test: 0.4320
+Epoch 100 | Loss: 1.2121 | Train: 0.7667 | Val: 0.6620 | Test: 0.6480 | Best Test: 0.6490
+Epoch 150 | Loss: 0.6789 | Train: 0.8333 | Val: 0.6780 | Test: 0.6740 | Best Test: 0.6790
+Epoch 200 | Loss: 0.3377 | Train: 0.9083 | Val: 0.6640 | Test: 0.6700 | Best Test: 0.6820
+
+Best Val Acc: 0.6980 at epoch 162
+Test Acc at Best Val: 0.6820
+Total Time: 4.25s
+
+Progress: 90/90 (100.0%)
+
+================================================================================
+Run 5 | Dataset: citeseer | Config: T_Adam+TRF+Ricci
+Seed: 46
+================================================================================
+Computing TRF (Topological Relevance Function)...
+  [Cache HIT - Memory] trf
+
+  TRF(G) = 37.4031
+  LR scale factor = exp(-0.1 × 37.4031) = 0.023747
+  Adjusted LR = 0.01 × 0.023747 = 0.000237
+
+  [Cache HIT - Memory] node_weights
+Epoch   1 | Loss: 1.7934 | Train: 0.1833 | Val: 0.1740 | Test: 0.1820 | Best Test: 0.1820
+Epoch  50 | Loss: 1.6722 | Train: 0.5750 | Val: 0.5060 | Test: 0.5040 | Best Test: 0.5040
+Epoch 100 | Loss: 1.2280 | Train: 0.7417 | Val: 0.6280 | Test: 0.6120 | Best Test: 0.6120
+Epoch 150 | Loss: 0.5943 | Train: 0.9083 | Val: 0.6840 | Test: 0.6710 | Best Test: 0.6680
+Epoch 200 | Loss: 0.3114 | Train: 0.9167 | Val: 0.6600 | Test: 0.6760 | Best Test: 0.6710
+
+Best Val Acc: 0.6860 at epoch 153
+Test Acc at Best Val: 0.6710
+Total Time: 4.32s
+
+Results saved to: ./comparison_results/results_node_20251122_133737.json
+Plot saved to: ./comparison_results/comparison_node_20251122_133737.png
+
+====================================================================================================
+SUMMARY - NODE CLASSIFICATION
+====================================================================================================
+
+
+cora:
+----------------------------------------------------------------------------------------------------
+Configuration             Test Acc (mean±std)       Best       Worst      Time (s)
+----------------------------------------------------------------------------------------------------
+Adam                      0.7998 ± 0.0076        0.8060    0.7850    2.9 ± 0.1
+T_Adam                    0.7992 ± 0.0103        0.8080    0.7790    2.8 ± 0.1
+T_Adam+TRF                0.7914 ± 0.0045        0.7980    0.7860    3.3 ± 0.3
+T_Adam+AntiHub            0.7914 ± 0.0045        0.7980    0.7860    4.3 ± 0.6
+T_Adam+Homophily          0.7914 ± 0.0045        0.7980    0.7860    2.9 ± 0.1
+T_Adam+Ricci              0.7914 ± 0.0045        0.7980    0.7860    2.8 ± 0.1
+T_Adam+TRF+AntiHub        0.7914 ± 0.0045        0.7980    0.7860    2.9 ± 0.1
+T_Adam+TRF+Homophily      0.7914 ± 0.0045        0.7980    0.7860    2.9 ± 0.1
+T_Adam+TRF+Ricci          0.7914 ± 0.0045        0.7980    0.7860    2.8 ± 0.1
+
+
+citeseer:
+----------------------------------------------------------------------------------------------------
+Configuration             Test Acc (mean±std)       Best       Worst      Time (s)
+----------------------------------------------------------------------------------------------------
+T_Adam                    0.6808 ± 0.0156        0.7080    0.6670    5.4 ± 0.5
+T_Adam+TRF                0.6762 ± 0.0201        0.6970    0.6400    4.6 ± 0.1
+T_Adam+AntiHub            0.6762 ± 0.0201        0.6970    0.6400    5.3 ± 0.1
+T_Adam+Homophily          0.6762 ± 0.0201        0.6970    0.6400    4.4 ± 0.2
+T_Adam+Ricci              0.6762 ± 0.0201        0.6970    0.6400    5.0 ± 0.6
+T_Adam+TRF+AntiHub        0.6762 ± 0.0201        0.6970    0.6400    4.8 ± 0.6
+T_Adam+TRF+Homophily      0.6762 ± 0.0201        0.6970    0.6400    4.3 ± 0.0
+T_Adam+TRF+Ricci          0.6762 ± 0.0201        0.6970    0.6400    4.3 ± 0.0
+Adam                      0.6670 ± 0.0134        0.6890    0.6500    4.4 ± 0.4
+
+
+================================================================================
+COMPARISON COMPLETED!
+Results saved to: ./comparison_results/results_node_20251122_133737.json
+Plot saved to: ./comparison_results/comparison_node_20251122_133737.png
+================================================================================
